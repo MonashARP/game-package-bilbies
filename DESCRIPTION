@@ -3,14 +3,12 @@ Type: Package
 Title: Multiplayer blackjack game
 Version: 0.1.0
 Authors@R: c(
-    person(
-      "Andy", "Cheryl", "Sharon"
-      email = "",
-      role = c("aut", "cre")
-    )
-  )
+    person("Andy", "Tran", email = "dtra0044@student.monash.edu", role = "cre"),
+    person("Cheryl", "familyname", email = "noname@student.monash.edu", role = "aut"),
+    person("Sharon", "familyname", email = "noname@student.monash.edu", role = "aut"))
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.2
