@@ -5,10 +5,15 @@ Version: 0.1.0
 Authors@R: c(
     person("Andy", "Tran", email = "dtra0044@student.monash.edu", role = "cre"),
     person("Cheryl", "familyname", email = "noname@student.monash.edu", role = "aut"),
-    person("Sharon", "familyname", email = "noname@student.monash.edu", role = "aut"))
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+    person("Rong", "Xu", email = "rxuu0059@student.monash.edu", role = "aut"))
+Description: A simple package to simulate blackjack hands, compute scores, and determine game outcomes.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

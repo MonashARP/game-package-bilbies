@@ -1,0 +1,63 @@
+---
+title: "blackjackR-intro"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{blackjackR-intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+`blackjackR` is a simple R package that lets you simulate the card game of Blackjack.
+
+## Installation
+
+To install from source:
+
+```r
+devtools::install_github("MonashARP/game-package-bilbies", dependencies = TRUE)
+```
+
+## Functions
+
+### 1. `deal_hand()`
+
+Deal random cards from a 52-card deck.
+
+```r
+deal_hand()
+#> "10♦" "A♠"
+```
+
+### 2. `card_value()`
+
+Score a hand in Blackjack, with logic for Aces.
+
+```r
+card_value(c("A♠", "K♦"))
+#> 21
+```
+
+### 3. `play_blackjack()`
+
+Simulate a full round of Blackjack and return the result.
+
+```r
+play_blackjack()
+#> $player_hand
+#> [1] "10♣" "9♦"
+#> $dealer_hand
+#> [1] "8♠" "Q♥"
+#> $player_score
+#> [1] 19
+#> $dealer_score
+#> [1] 18
+#> $result
+#> [1] "Player wins"
+```
+
+## Conclusion
+
+This package demonstrates basic simulation and scoring logic for Blackjack. You can extend it to include hit/stand logic, betting systems, or multiplayer support.
+
