@@ -9,7 +9,7 @@ vignette: >
 
 ## Introduction
 
-`blackjackR` is a simple R package that lets you simulate the card game of Blackjack.
+`blackjackR` is a simple R package that lets you simulate the card game of Blackjack. It simulates single and multiplayer Blackjack rounds with card dealing and scoring.
 
 ## Installation
 
@@ -23,7 +23,7 @@ devtools::install_github("MonashARP/game-package-bilbies", dependencies = TRUE)
 
 ### 1. `deal_hand()`
 
-Deal random cards from a 52-card deck.
+Randomly draw cards (default 2) from a shuffled 52-card deck. Use a separate shuffled deck to avoid duplicates when dealing to multiple players.
 
 ```r
 deal_hand()
@@ -32,7 +32,7 @@ deal_hand()
 
 ### 2. `card_value()`
 
-Score a hand in Blackjack, with logic for Aces.
+Score a hand in Blackjack, with logic for Aces (worth 11 unless the total would bust, in which case they count as 1).
 
 ```r
 card_value(c("A♠", "K♦"))
@@ -41,7 +41,7 @@ card_value(c("A♠", "K♦"))
 
 ### 3. `play_blackjack()`
 
-Simulate a full round of Blackjack and return the result.
+Simulate a single-player game round against the dealer.
 
 ```r
 play_blackjack()
@@ -57,7 +57,41 @@ play_blackjack()
 #> [1] "Player wins"
 ```
 
+### 4. `deal_multi_hands()`
+
+Deal 2 cards to each player from a shared shuffled deck. Support multiple players.
+
+```r
+deal_multi_hand(deck, n_players = 3)
+#> $hands
+#> $hands$Player_1
+#> [1] "A♣" "7♠"
+#> ...
+#> $deck
+#> [remaining cards...]
+```
+
+### 5. `play_multi_blackjack()`
+
+Simulate a full round with multiple players and one dealer. The dealer hits until 17 or more, and each player is compared against the dealer.
+
+```r
+play_blackjack_multi(3)
+#> $dealer_hand
+#> [1] "9♥" "7♣"
+#> $dealer_score
+#> [1] 16
+#> $Player_1
+#> $Player_1$hand
+#> [1] "A♠" "K♦"
+#> $Player_1$score
+#> [1] 21
+#> $Player_1$result
+#> [1] "Player wins"
+#> ...
+```
+
 ## Conclusion
 
-This package demonstrates basic simulation and scoring logic for Blackjack. You can extend it to include hit/stand logic, betting systems, or multiplayer support.
+`blackjack` lets you simulate hands, rounds, and multiplayer games. It can be extended with custom rules, player choices, and betting strategies.
 
