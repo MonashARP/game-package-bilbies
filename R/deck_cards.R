@@ -5,16 +5,23 @@
 #' @export
 deck <- expand.grid(
   rank = as.character(c(2:10, "J", "Q", "K", "A")),
-  suit = c("♠", "♥", "♦", "♣"),
+  suit = c("\u2660", "\u2665", "\u2666", "\u2663"),
   stringsAsFactors = FALSE
 )
 
+#' Card value mapping
 #' @export
 card_number <- c(
   "2" = 2, "3" = 3, "4" = 4, "5" = 5, "6" = 6,
   "7" = 7, "8" = 8, "9" = 9, "10" = 10,
   "J" = 10, "Q" = 10, "K" = 10, "A" = 11
 )
+
+#' @export
+create_shuffled_deck <- function() {
+  cards <- paste0(deck$rank, deck$suit)
+  sample(cards)
+}
 
 #' Score a Blackjack Hand
 #'
