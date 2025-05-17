@@ -13,10 +13,13 @@
 #' @export
 
 deal_hand <- function(deck, n = 1) {
-  if(n > length(deck)) {
-    stop("not enough cards")
+
+  if (length(deck) < 52) {
+    cat("Reshuffle cards...\n")
+    deck <- create_shuffled_deck()
   }
-  hand <- deck[1:n]
-  deck <- deck[-(1:n)]
-  list(hand = hand, deck = deck)
+  hand           <- deck[1:n]
+  remaining_deck <- deck[-(1:n)]
+
+  list(hand = hand, deck = remaining_deck)
 }
