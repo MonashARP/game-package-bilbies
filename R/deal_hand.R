@@ -12,8 +12,10 @@
 #' }
 #' @export
 deal_hand <- function(deck, n = 2) {
-  if (length(deck) < n) stop("Not enough cards left in the deck to deal.")
+  if(n > length(deck)) {
+    stop("not enough cards")
+  }
   hand <- deck[1:n]
-  remaining_deck <- deck[-(1:n)]
-  return(list(hand = hand, deck = remaining_deck))
+  deck <- deck[-(1:n)]
+  list(hand = hand, deck = deck)
 }
