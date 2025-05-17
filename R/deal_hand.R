@@ -11,7 +11,8 @@
 #'   \item{deck}{The updated deck after removing dealt cards}
 #' }
 #' @export
-deal_hand <- function(deck, n = 2) {
+
+deal_hand <- function(deck, n = 1) {
   if(n > length(deck)) {
     stop("not enough cards")
   }

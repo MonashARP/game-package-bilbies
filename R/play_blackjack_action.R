@@ -8,24 +8,29 @@
 #'
 #' @export
 play_blackjack_action <- function(n_players = 1) {
-  # Deal two cards to the player and dealer
-  player_hand <- deal_hand(2)
-  dealer_hand <- deal_hand(2)
+  # Deal two cards to the player
+  str <- deal_hand(deck, 2)
+  player_hand <- str$hand
+  deck        <- str$deck
+  # Deal two cards to the dealer
+  str <- deal_hand(deck, 2)
+  dealer_hand <- str$hand
+  deck        <- str$deck
 
   cat("Dealer shows:", dealer_hand[1], "?\n")
 
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
   # Player's turn
-  player_res   <- player_turn(player_hand, deck)
-  player_hand  <- player_res$hand
-  deck         <- player_res$deck
-  player_score <- player_res$total
+  str   <- player_turn(player_hand, deck)
+  player_hand  <- str$hand
+  deck         <- str$deck
+  player_score <- str$total
   # Dealer's turn
-  dealer_res <- dealer_turn(dealer_hand, deck)
-  dealer_hand  <- dealer_res$hand
-  deck         <- dealer_res$deck
-  dealer_score <- dealer_res$total
+  str <- dealer_turn(dealer_hand, deck)
+  dealer_hand  <- str$hand
+  deck         <- str$deck
+  dealer_score <- str$total
 
   result <- if (player_score > 21) {
     "Player busts"

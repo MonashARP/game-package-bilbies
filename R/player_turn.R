@@ -20,8 +20,9 @@ player_turn <- function(player_hand, deck) {
 
     action <- tolower(readline("Hit (h) or stand (s)? "))
     if (action == "hit" | action == "h") {
-      new_card   <- deck[1]
-      deck       <- deck[-1]
+      str <- deal_hand(deck, 1)
+      new_card <- str$hand
+      deck        <- str$deck
       player_hand <- c(player_hand, new_card)
 
       total <- card_value(player_hand)

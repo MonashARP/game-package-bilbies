@@ -18,8 +18,9 @@ dealer_turn <- function(dealer_hand, deck) {
     card_value(dealer_hand) < 17 ||
     (card_value(dealer_hand) == 17 && sum(card_value(dealer_hand) == 11) > 0)
   ) {
-    new_card    <- deck[1]
-    deck        <- deck[-1]
+    str <- deal_hand(deck, 1)
+    new_card <- str$hand
+    deck        <- str$deck
     dealer_hand <- c(dealer_hand, new_card)
   }
   total <- card_value(dealer_hand)
