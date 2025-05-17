@@ -1,3 +1,18 @@
+#' Logic of dealer turn
+#'
+#' Simulates the dealer's decisions in Blackjack
+#'
+#' @param dealer_hand The dealer's current hand
+#' @param deck The current deck of cards
+#'
+#' @return A list with:
+#' \describe{
+#'  \item{hand}{The dealer's final hand}
+#'  \item{deck}{The remaining deck after the dealer's turn}
+#'  \item{total}{The total value of the dealer's hand}
+#'  }
+#'
+#' @export
 dealer_turn <- function(dealer_hand, deck) {
   while (
     card_value(dealer_hand) < 17 ||
