@@ -1,7 +1,8 @@
 #' @title Blackjack Deck and Scoring
-#' @description A full 52-card deck and scoring logic for Blackjack
+#' @description A full 52-card deck (multiplied to 4 decks) and scoring logic for Blackjack
 #' @name deck_cards
 
+#' Base 52-card deck (not shuffled)
 #' @export
 deck <- expand.grid(
   rank = as.character(c(2:10, "J", "Q", "K", "A")),
@@ -17,10 +18,14 @@ card_number <- c(
   "J" = 10, "Q" = 10, "K" = 10, "A" = 11
 )
 
+#' Create a shuffled Blackjack shoe (4 decks)
+#'
+#' @return A character vector of 208 shuffled cards
 #' @export
 create_shuffled_deck <- function() {
   cards <- paste0(deck$rank, deck$suit)
-  sample(cards)
+  shoe <- rep(cards, 4)  # 4 full decks
+  sample(shoe)
 }
 
 #' Score a Blackjack Hand
