@@ -58,17 +58,8 @@ play_blackjack_multi_2 <- function(n_players = 2) {
     result = player_results_vec,
     stringsAsFactors = FALSE
   )
+  return(players_df)
 
-  dealer_df <- data.frame(
-    hand  = paste(dealer_hand, collapse = " "),
-    score = dealer_score,
-    stringsAsFactors = FALSE
-  )
-
-  list(
-    players = players_df,
-    dealer  = dealer_df
-  )
 }
 
 
