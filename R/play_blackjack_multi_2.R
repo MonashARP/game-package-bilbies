@@ -1,3 +1,12 @@
+#' Simulate Multiplayer Blackjack (2 players)
+#'
+#' This function simulates a round of Blackjack for two players against a dealer.
+#'
+#' @param n_players Number of players (default is 2)
+#'
+#' @return A data frame containing the results of the game, including each player's hand, score, and result against the dealer
+#'
+#' @export
 play_blackjack_multi_2 <- function(n_players = 2) {
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
