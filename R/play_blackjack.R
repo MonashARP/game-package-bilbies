@@ -7,7 +7,10 @@
 #' @return A list with hands, scores, and outcome
 #'
 #' @export
-play_blackjack_action <- function(n_players = 1) {
+play_blackjack <- function(n_players = 1) {
+  # Create a shuffled deck of cards
+  deck <- create_shuffled_deck()
+
   # Deal two cards to the player
   str <- deal_hand(deck, 2)
   player_hand <- str$hand
@@ -19,8 +22,7 @@ play_blackjack_action <- function(n_players = 1) {
 
   cat("Dealer shows:", dealer_hand[1], "?\n")
 
-  # Create a shuffled deck of cards
-  deck <- create_shuffled_deck()
+
   # Player's turn
   str   <- player_turn(player_hand, deck)
   player_hand  <- str$hand

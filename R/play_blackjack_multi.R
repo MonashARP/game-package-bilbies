@@ -7,14 +7,9 @@
 #' @return A data frame containing the results of the game, including each player's hand, score, and result against the dealer
 #'
 #' @export
-play_blackjack_multi_2 <- function(n_players = 2) {
+play_blackjack_multi <- function(n_players = 2) {
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
-  # Deal two cards to dealer
-  str <- deal_hand(deck, 2)
-  dealer_hand <- str$hand
-  deck        <- str$deck
-  cat("Dealer shows:", dealer_hand[1], "?\n")
 
   # Create a list to hold each player's hand
   player_hands <- vector("list", n_players)
@@ -25,6 +20,12 @@ play_blackjack_multi_2 <- function(n_players = 2) {
     player_hands[[i]] <- str$hand
     deck <- str$deck
     }
+
+  # Deal two cards to dealer
+  str <- deal_hand(deck, 2)
+  dealer_hand <- str$hand
+  deck        <- str$deck
+  cat("Dealer shows:", dealer_hand[1], "?\n")
 
   # Create a list to hold each player's results
   player_results <- vector("list", n_players)
