@@ -32,7 +32,6 @@ create_shuffled_deck <- function() {
 #' @export
 card_value <- function(cards) {
   ranks <- sub(".$", "", cards)
-  ranks <- sub(".$", "", cards)
   vals <- unname(card_number[ranks])
   total <- sum(vals)
   number_of_aces <- sum(ranks == "A")
