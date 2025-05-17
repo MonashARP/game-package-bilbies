@@ -1,48 +1,78 @@
-#' Simulate a Multiplayer Blackjack Round
+#' Simulate Multiplayer Blackjack (2 players)
 #'
-#' Deal to players and dealer, score hands, and return results.
+#' This function simulates a round of Blackjack for two players against a dealer.
 #'
-#' @param n_players Number of players
-#' @return A list with dealer hand and player outcomes
+#' @param n_players Number of players (default is 2)
+#'
+#' @return A data frame containing the results of the game, including each player's hand, score, and result against the dealer
+#'
 #' @export
-play_blackjack_multi <- function(n_players = 3) {
+play_blackjack_multi_2 <- function(n_players = 2) {
+  # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
+  # Deal two cards to dealer
+  str <- deal_hand(deck, 2)
+  dealer_hand <- str$hand
+  deck        <- str$deck
+  cat("Dealer shows:", dealer_hand[1], "?\n")
 
-  dealt <- deal_multi_hand(deck, n_players)
-  player_hands <- dealt$hands
-  deck <- dealt$deck
+  # Create a list to hold each player's hand
+  player_hands <- vector("list", n_players)
 
-  dealer_hand <- deck[1:2]
-  deck <- deck[-(1:2)]
-
-  # Dealer rule: Hit until 17+
-  while (card_value(dealer_hand) < 17) {
-    dealer_hand <- c(dealer_hand, deck[1])
-    deck <- deck[-1]
-  }
-
-  dealer_score <- card_value(dealer_hand)
-  results <- list(dealer_hand = dealer_hand, dealer_score = dealer_score)
-
-  for (i in 1:n_players) {
-    name <- paste0("Player_", i)
-    hand <- player_hands[[name]]
-    score <- card_value(hand)
-
-    result <- if (score > 21) {
-      "Player busts"
-    } else if (dealer_score > 21 || score > dealer_score) {
-      "Player wins"
-    } else if (score < dealer_score) {
-      "Dealer wins"
-    } else {
-      "Push"
+  # Deal two cards to each player
+  for (i in seq_len(n_players)) {
+    str <- deal_hand(deck, 2)
+    player_hands[[i]] <- str$hand
+    deck <- str$deck
     }
 
-    results[[name]] <- list(hand = hand,
-                            score = score,
-                            result = result)
+  # Create a list to hold each player's results
+  player_results <- vector("list", n_players)
+  # Player's turn
+  for (i in seq_len(n_players)) {
+    cat("Player", i, "turn:\n")
+    res <- player_turn(player_hands[[i]], deck)
+    player_hands[[i]] <- res$hand
+    deck <- res$deck
+    player_results[[i]] <- list(
+      hand  = res$hand,
+      score = res$total
+    )
   }
 
-  return(results)
+  # Dealer's turn
+  dealer_res <- dealer_turn(dealer_hand, deck)
+  dealer_hand  <- dealer_res$hand
+  deck         <- dealer_res$deck
+  dealer_score <- dealer_res$total
+
+  # Compare each player vs dealer
+  get_result <- function(ps, dealer_score) {
+    if      (ps > 21)            "Player busts"
+    else if (dealer_score > 21)  "Dealer busts"
+    else if (ps > dealer_score)  "Player wins"
+    else if (dealer_score > ps)  "Dealer wins"
+    else                          "Push"
+  }
+
+  # vector of player scores
+  player_scores <- sapply(player_results, `[[`, "score")
+
+  # vector of results
+  player_results_vec <- mapply(get_result,
+                               ps = player_scores,
+                               MoreArgs = list(dealer_score = dealer_score),
+                               USE.NAMES = FALSE)
+
+  players_df <- data.frame(
+    player = paste0("Player ", seq_len(n_players)),
+    hand   = sapply(player_results, function(x) paste(x$hand, collapse = " ")),
+    score  = player_scores,
+    result = player_results_vec,
+    stringsAsFactors = FALSE
+  )
+  return(players_df)
+
 }
+
+
