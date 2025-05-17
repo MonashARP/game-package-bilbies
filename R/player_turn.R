@@ -5,8 +5,8 @@ player_turn <- function(player_hand, deck) {
   while (!stand && total < 22) {
     cat("Your hand:", paste(player_hand, collapse = " "), " (Total =", total, ")\n")
 
-    action <- tolower(readline("Hit or stand? "))
-    if (action == "hit") {
+    action <- tolower(readline("Hit (h) or stand (s)? "))
+    if (action == "hit" | action == "h") {
       new_card   <- deck[1]
       deck       <- deck[-1]
       player_hand <- c(player_hand, new_card)
@@ -15,12 +15,12 @@ player_turn <- function(player_hand, deck) {
 
       cat("You drew", new_card, "\n")
 
-    } else if (action == "stand") {
+    } else if (action == "stand" | action == "s") {
       stand <- TRUE
       cat("You stand at", total, "\n")
 
     } else {
-      cat("Invalid choice — please type ‘hit’ or ‘stand’.\n")
+      cat("Invalid choice — please type ‘hit’, 'h' or ‘stand’, 's'.\n")
     }
   }
 
