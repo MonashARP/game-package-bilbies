@@ -8,7 +8,6 @@
 #'
 #' @export
 play_blackjack_multi_2 <- function(n_players = 2) {
-  browser()
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
   # Deal two cards to dealer
