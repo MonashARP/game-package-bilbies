@@ -1,25 +1,18 @@
-#' Deal a Blackjack Hand
+#' Create a shuffled Blackjack shoe (4 decks)
 #'
-#' Deals cards from a given deck and removes them from the deck.
-#'
-#' @param deck A character vector representing the current deck (e.g., output of `create_shuffled_deck()`)
-#' @param n Number of cards to deal (default = 2)
-#'
-#' @return A list with:
-#' \describe{
-#'   \item{hand}{Character vector of dealt cards (length = n)}
-#'   \item{deck}{The updated deck after removing dealt cards}
-#' }
+#' @return A character vector of 208 shuffled cards
 #' @export
+create_shuffled_deck <- function(noOfDecks = 4) {
+  suits <- c("♠", "♥", "♦", "♣")
+  ranks <- c(2:10, "J", "Q", "K", "A")
+  single_deck <- paste0(
+    rep(ranks, times = length(suits)),
+    rep(suits, each  = length(ranks))
+  )
 
-deal_hand <- function(deck, n = 1) {
-  # Reshuffle the deck after 75% of the cards have been dealt
-  if (length(deck) < 52) {
-    cat("Reshuffle cards...\n")
-    deck <- create_shuffled_deck()
-  }
-  hand           <- deck[1:n]
-  remaining_deck <- deck[-(1:n)]
+  shoe <- rep(single_deck, times = noOfDecks)
 
-  list(hand = hand, deck = remaining_deck)
-}
+  sample(shoe)}
+
+
+
