@@ -1,10 +1,3 @@
-card_number <- c(
-  "2" = 2, "3" = 3, "4" = 4, "5" = 5, "6" = 6,
-  "7" = 7, "8" = 8, "9" = 9, "10" = 10,
-  "J" = 10, "Q" = 10, "K" = 10, "A" = 11
-)
-
-
 #' Create a shuffled Blackjack shoe (4 decks)
 #'
 #' @return A character vector of 208 shuffled cards
@@ -20,24 +13,6 @@ create_shuffled_deck <- function(noOfDecks = 4) {
   shoe <- rep(single_deck, times = noOfDecks)
 
   sample(shoe)}
-#' Score a Blackjack Hand
-#'
-#' Calculates total hand value, adjusting for Aces
-#'
-#' @param cards A character vector like "A♠", "10♥"
-#' @return Total hand value (numeric)
-#' @export
-#'
-#'
-#'
-card_value <- function(cards) {
-  ranks <- sub(".$", "", cards)
-  vals <- unname(card_number[ranks])
-  total <- sum(vals)
-  number_of_aces <- sum(ranks == "A")
-  while (total > 21 && number_of_aces > 0) {
-    total <- total - 10
-    number_of_aces <- number_of_aces - 1
-  }
-  return(total)
-}
+
+
+
