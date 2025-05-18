@@ -1,7 +1,7 @@
 simulation_blackjack <- function(n_sim = 1000) {
-  threshold <- as.integer(readline("At or above what score will you stay? (enter an integer 1–21): "))
-  if (is.na(threshold) || threshold < 1 || threshold > 21) {
-    stop("️Error! Please enter a valid integer between 1 and 21.")
+  threshold <- as.integer(readline("At or above what score will you stay? (enter an integer 12–21): "))
+  if (is.na(threshold) || threshold < 12 || threshold > 21) {
+    stop("️Error! Please enter a valid integer between 12 and 21.")
   }
 
 
