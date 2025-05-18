@@ -6,7 +6,6 @@ simulation_blackjack <- function(n_sim = 1000) {
 
 
   play_once <- function() {
-    browser()
     # 1. Create a shuffled deck and deal the initial hands
     deck <- create_shuffled_deck()
     p_hand    <- deal_hand(deck, 2);    player_hand <- p_hand$hand;    deck <- p_hand$deck
