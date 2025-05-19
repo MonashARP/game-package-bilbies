@@ -8,7 +8,7 @@
 #' @return A list containing the player's hand, dealer's hand, scores, and the result of the game.
 #'
 #' @export
-play_blackjack <- function(n_players = 1) {
+play_blackjack <- function(input_fn = readline) {
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
 
@@ -25,7 +25,7 @@ play_blackjack <- function(n_players = 1) {
 
 
   # Player's turn
-  str   <- player_turn(player_hand, deck)
+  str   <- player_turn(player_hand, deck, input_fn)
   player_hand  <- str$hand
   deck         <- str$deck
   player_score <- str$total
