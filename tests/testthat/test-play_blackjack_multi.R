@@ -1,6 +1,16 @@
-skip("Skipping until play_blackjack_multi returns dealer_hand and Player_1")
-test_that("play_blackjack_multi runs", {
-  result <- play_blackjack_multi(2)
-  expect_true("dealer_hand" %in% names(result))
-  expect_true("Player_1" %in% names(result))
+test_that("play_blackjack run and return result without crashing", {
+  fake_input <- local({
+    calls <- 0L
+    ans   <- c("s", "s", "s", "s")
+    function(prompt) {
+      calls <<- calls + 1L
+      ans[calls]
+    }
+  })
+  out <- play_blackjack_multi(input_fn = fake_input)
+  expect_s3_class(out, "data.frame")
+  expect_named(
+    out,
+    c("player", "hand", "score", "result")
+  )
 })
