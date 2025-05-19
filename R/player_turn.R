@@ -12,14 +12,14 @@
 #' \item{total}{The total value of the player's hand.}
 #'
 #' @export
-player_turn <- function(player_hand, deck) {
+player_turn <- function(player_hand, deck, input_fn = readline) {
   stand <- FALSE
   total <- card_value(player_hand)
 
   while (!stand && total < 22) {
     cat("Your hand:", paste(player_hand, collapse = " "), " (Total =", total, ")\n")
 
-    action <- tolower(readline("Hit (h) or stand (s)? "))
+    action <- tolower(input_fn("Hit (h) or stand (s)? "))
     if (action == "hit" | action == "h") {
       str <- deal_hand(deck, 1)
       new_card <- str$hand

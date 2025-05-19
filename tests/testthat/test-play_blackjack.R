@@ -14,3 +14,4 @@ test_that("play_blackjack result is valid", {
   result <- play_blackjack()
   expect_true(result$result %in% c("Player busts", "Dealer busts", "Player wins", "Dealer wins", "Push"))
 })
+
