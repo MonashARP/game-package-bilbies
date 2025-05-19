@@ -1,10 +1,11 @@
 #' Play One Round of Blackjack with Action
 #'
+#' @description
 #' This function simulates a full round of Blackjack, allowing the player to hit or stand.
 #'
 #' @param n_players Number of players (default is 1)
 #'
-#' @return A list with hands, scores, and outcome
+#' @return A list containing the player's hand, dealer's hand, scores, and the result of the game.
 #'
 #' @export
 play_blackjack <- function(n_players = 1) {

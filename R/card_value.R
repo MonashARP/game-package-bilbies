@@ -1,15 +1,13 @@
 #' Score a Blackjack Hand
 #'
+#' @description
 #' Calculates total hand value, adjusting for Aces
 #'
 #' @param cards A character vector like "A♠", "10♥"
+#'
 #' @return Total hand value (numeric)
+#'
 #' @export
-#'
-#'
-#'
-#'
-#'
 card_value <- function(cards) {
   # Define the values for each card rank
   values <- c(

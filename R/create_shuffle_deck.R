@@ -1,6 +1,12 @@
-#' Create a shuffled Blackjack shoe (4 decks)
+#' Create a Shuffled Blackjack Shoe
+#'
+#' @description
+#' This function creates a shuffled deck of cards for Blackjack, consisting of multiple standard decks combined.
+#'
+#' @param noOfDecks Number of decks to include in the shoe (default = 4)
 #'
 #' @return A character vector of 208 shuffled cards
+#'
 #' @export
 create_shuffled_deck <- function(noOfDecks = 4) {
   suits <- c("♠", "♥", "♦", "♣")

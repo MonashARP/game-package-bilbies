@@ -1,5 +1,6 @@
 #' Deal a Blackjack Hand
 #'
+#' @description
 #' Deals cards from a given deck and removes them from the deck.
 #'
 #' @param deck A character vector representing the current deck (e.g., output of `create_shuffled_deck()`)

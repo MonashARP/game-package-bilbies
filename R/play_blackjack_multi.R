@@ -1,5 +1,6 @@
 #' Simulate Multiplayer Blackjack (2 players)
 #'
+#' @description
 #' This function simulates a round of Blackjack for two players against a dealer.
 #'
 #' @param n_players Number of players (default is 2)

@@ -1,6 +1,7 @@
-#' Logic of dealer turn
+#' Dealer Turn Logic
 #'
-#' Simulates the dealer's decisions in Blackjack
+#'@description
+#' Simulates the dealer's decisions in Blackjack.
 #'
 #' @param dealer_hand The dealer's current hand
 #' @param deck The current deck of cards

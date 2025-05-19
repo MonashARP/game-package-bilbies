@@ -1,5 +1,6 @@
 #' Player Turn Interaction
 #'
+#' @description
 #' Handles the player's turn in a Blackjack game, allowing them to hit or stand.
 #'
 #' @param player_hand A vector of cards representing the player's hand.
