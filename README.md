@@ -1,5 +1,12 @@
 # Multiplayer Blackjack Simulation 
 
+<br>
+</br>
+
+<p align="center">
+  <img src="logo/blackjack_sticker.png" width="200"/>
+</p>
+
 ## Overview
 
 The **blackjack** package provides a complete environment to simulate and play Blackjack in R. 
