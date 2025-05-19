@@ -17,3 +17,19 @@ test_that("deal_hand returns correct number of cards and updates deck", {
     expect_equal(orig_counts[card], hand_counts[card] + new_counts[card])
   }
 })
+
+test_that("dealer_turn draws until ≥17 when starting very low", {
+  # Create a deck of 5 cards
+  deck <- rep("5♠", 208)
+
+  # Start the dealer at 11, and make the player score 16 and they stand
+  dealer_hand <- c("7♠", "5♥")
+  player_hand <- c("10♠", "6♠")
+
+  result <- dealer_turn(dealer_hand, deck)
+
+  # Dealer:  11 + 5 + 5 = 21
+  expect_equal(result$total, 17L)
+  expect_length(result$hand, 3L)
+  expect_length(result$deck, 207L)
+})
