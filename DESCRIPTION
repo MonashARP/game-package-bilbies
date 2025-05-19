@@ -3,10 +3,11 @@ Type: Package
 Title: Multiplayer Blackjack Game
 Version: 0.1.0
 Authors@R: c(
-    person("Andy", "Tran", email = "dtra0044@student.monash.edu", role = "cre"),
+    person("Andy", "Tran", email = "dtra0044@student.monash.edu", role = c("cre", "aut")),
     person("Yiran", "Yao", email = "yyao0066@student.monash.edu", role = "aut"),
     person("Rong", "Xu", email = "rxuu0059@student.monash.edu", role = "aut"))
-Description: A simple package to simulate blackjack hands, compute scores, and determine game outcomes.
+Description: Offers functions to simulate multiplayer Blackjack gameplay, calculate hand values, and evaluate results. 
+  Supports automated player decision-making, dealer behaviour, and repeated game simulations.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
