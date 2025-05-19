@@ -1,5 +1,5 @@
 ---
-title: "blackjackR-intro"
+title: "blackjack-intro"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{blackjackR-intro}
@@ -9,7 +9,8 @@ vignette: >
 
 ## Introduction
 
-`blackjackR` is a simple R package that lets you simulate the card game of Blackjack. It simulates single and multiplayer Blackjack rounds with card dealing and scoring.
+The `blackjack` package provides tools to simulate the card game of Blackjack in R. It supports single and multiplayer modes, interactive or automated game, and dealer decision logic. 
+
 
 ## Installation
 
@@ -19,79 +20,133 @@ To install from source:
 devtools::install_github("MonashARP/game-package-bilbies", dependencies = TRUE)
 ```
 
-## Functions
+## Function Overview and Examples 
 
-### 1. `deal_hand()`
+The package includes several functions to facilitate the game:
 
-Randomly draw cards (default 2) from a shuffled 52-card deck. Use a separate shuffled deck to avoid duplicates when dealing to multiple players.
+### 1. `create_shuffled_deck()`
 
-```r
-deal_hand()
-#> "10♦" "A♠"
-```
-
-### 2. `card_value()`
-
-Score a hand in Blackjack, with logic for Aces (worth 11 unless the total would bust, in which case they count as 1).
+Creates a shuffled Blackjack shoe (default = 208 cards):
 
 ```r
-card_value(c("A♠", "K♦"))
-#> 21
+deck <- create_shuffled_deck()
+length(deck)
+#> [1] 208
+head(deck, 5)
+#> [1] "J♦" "K♠" "5♥" "3♥" "7♦"
 ```
 
-### 3. `play_blackjack()`
+### 2. `deal_hand()`
 
-Simulate a single-player game round against the dealer.
+Deals cards from the deck and updates it:  
+
+```r
+deal <- deal_hand(deck, 2)
+deal$hand
+#> [1] "J♦" "K♠"
+
+ # update the deck
+deck <- deal$deck 
+length(deck)
+#> [1] 206
+```
+
+### 3. `card_value()`
+
+Calculates the score of a hand:
+
+```r
+hand <- c("A♣", "8♦")
+card_value(hand)
+#> [1] 19
+
+card_value(c("A♣", "8♦", "5♠"))
+#> [1] 14
+```
+
+### 4. `player_turn()`
+
+Simulates a player's turn, allowing them to hit or stand:
+
+```r
+hand <- deal_hand(deck, 2)$hand
+player_turn(hand, deck)
+#> Your hand: 5♥ 3♥  (Total = 8 )
+#> Prompts for "Hit (h) or stand (s)?" input in console
+```
+
+### 5. `auto_player_turn()`
+
+Automatically draws cards until a threshold:
+
+```r
+hand <- deal_hand(deck, 2)$hand
+result <- auto_player_turn(hand, deck, threshold = 17)
+result$hand
+#> [1] "5♥" "3♥" "5♥" "3♥" "7♦"
+result$total
+#> 23
+```
+
+### 6. `dealer_turn()`
+
+Simulates the dealer's turn, following standard rules:
+
+```r
+hand <- deal_hand(deck, 2)$hand
+result <- dealer_turn(hand, deck)
+#> Dealer's hand: 5♥ 3♥ 5♥ 3♥ 7♦ Total: 23 
+result$hand
+#> [1] "5♥" "3♥" "5♥" "3♥" "7♦"
+result$total
+#> [1] 23
+```
+
+### 7. `dealer_turn_smart()`
+
+Simulates the dealer's turn with a smart strategy, considering the player's hand:
+
+```r
+dealer_hand <- deal_hand(deck, 2)$hand
+player_hand <- c("10♦", "8♣")  
+dealer_turn_smart(dealer_hand, player_hand, deck)
+#> returns list with final hand and total score
+```
+
+### 8. `play_blackjack()`
+
+Simulates a full game of Blackjack, allowing for player and dealer turns:
 
 ```r
 play_blackjack()
-#> $player_hand
-#> [1] "10♣" "9♦"
-#> $dealer_hand
-#> [1] "8♠" "Q♥"
-#> $player_score
-#> [1] 19
-#> $dealer_score
-#> [1] 18
-#> $result
-#> [1] "Player wins"
+#> Dealer shows: 4♠ ?
+#> Your hand: 2♣ 5♥  (Total = 7 )
+#> Prompts for "Hit (h) or stand (s)?" input in console
+#> Returns final hands and result
 ```
 
-### 4. `deal_multi_hands()`
+### 9. `play_blackjack_multi()`
 
-Deal 2 cards to each player from a shared shuffled deck. Support multiple players.
+Simulates a full round for multiple players vs the dealer:
 
 ```r
-deal_multi_hand(deck, n_players = 3)
-#> $hands
-#> $hands$Player_1
-#> [1] "A♣" "7♠"
-#> ...
-#> $deck
-#> [remaining cards...]
+play_blackjack_multi(2)
+#> Returns data frame of hands, scores, and results
 ```
 
-### 5. `play_multi_blackjack()`
+### 10. `simulation_blackjack()`
 
-Simulate a full round with multiple players and one dealer. The dealer hits until 17 or more, and each player is compared against the dealer.
+Simulates multiple automated rounds of Blackjack: 
 
 ```r
-play_blackjack_multi(3)
-#> $dealer_hand
-#> [1] "9♥" "7♣"
-#> $dealer_score
-#> [1] 16
-#> $Player_1
-#> $Player_1$hand
-#> [1] "A♠" "K♦"
-#> $Player_1$score
-#> [1] 21
-#> $Player_1$result
-#> [1] "Player wins"
-#> ...
+simulation_blackjack(100)
+#> Prompts for threshold
+#> Returns table like:
+#> Outcome
+#> Lose Push  Win 
+#>  47    4   49 
 ```
 
 ## Conclusion
 
-`blackjack` lets you simulate hands, rounds, and multiplayer games. It can be extended with custom rules, player choices, and betting strategies.
-
+The blackjack package enables users to simulate Blackjack games in R, supporting both interactive and automated gameplay. It offers tools for dealing cards, calculating scores, managing player and dealer turns, and running simulations. This makes it a practical and engaging tool for exploring Blackjack mechanics and strategies through code.
