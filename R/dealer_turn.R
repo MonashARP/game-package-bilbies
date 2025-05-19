@@ -8,10 +8,10 @@
 #'
 #' @return A list with:
 #' \describe{
-#'  \item{hand}{The dealer's final hand}
-#'  \item{deck}{The remaining deck after the dealer's turn}
-#'  \item{total}{The total value of the dealer's hand}
-#'  }
+#'   \item{hand}{The final dealer hand after drawing cards.}
+#'   \item{deck}{The updated deck after removing drawn cards.}
+#'   \item{total}{The final total value of the dealer's hand.}
+#' }
 #'
 #' @export
 dealer_turn <- function(dealer_hand, deck) {

@@ -17,6 +17,7 @@
 #'   \item The player automatically draws until reaching or exceeding the threshold.
 #'   \item The dealer plays according to a smart strategy.
 #'   \item The outcome is determined as "Win", "Lose", or "Push" (draw).
+#'   }
 #'
 #' @export
 simulation_blackjack <- function(n_sim = 1000) {

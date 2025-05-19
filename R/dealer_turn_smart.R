@@ -19,6 +19,7 @@
 #'   \item{hand}{The final dealer hand after drawing cards.}
 #'   \item{deck}{The updated deck after removing drawn cards.}
 #'   \item{total}{The final total value of the dealer's hand.}
+#'          }
 #'
 #' @export
 dealer_turn_smart <- function(dealer_hand, player_hand, deck) {
