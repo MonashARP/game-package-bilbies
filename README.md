@@ -19,8 +19,8 @@ It includes functionality for both user-controlled and automated players, allows
 - Deal cards and calculate the total value of each hand
 - Let players choose to hit or stand during their turn
 - Use automated player strategies based on a set score threshold
-- Simulate dealer behavior with smart rules 
-- Play games with up to two players against the dealer
+- Simulate dealer behavior with the same rules in casinos
+- Play games with up to unlimited players against the dealer
 - Run simulations over many rounds to analyse outcomes
 
 ## Installation
