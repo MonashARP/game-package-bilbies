@@ -4,7 +4,7 @@
 </br>
 
 <p align="right">
-  <img src="man/figures/hex_logo.png"  
+  <img src="logo/hex_logo.png"  
        alt="blackjack hex sticker" 
        width="120" />
 </p>
