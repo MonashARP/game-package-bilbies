@@ -3,8 +3,10 @@
 <br>
 </br>
 
-<p align="center">
-  <img src="logo/blackjack_sticker.png" width="200"/>
+<p align="right">
+  <img src="man/figures/hex_logo.png"  
+       alt="blackjack hex sticker" 
+       width="120" />
 </p>
 
 ## Overview
