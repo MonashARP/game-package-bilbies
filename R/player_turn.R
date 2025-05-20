@@ -5,7 +5,7 @@
 #'
 #' @param player_hand A vector of cards representing the player's hand.
 #' @param deck A vector of cards representing the remaining deck.
-#'
+#' @param input_fn a holder to obtain player actions (defaults to \code{readline}); can be overridden to inject fake input for unit tests or if the user want to add fake actions.
 #' @return A list containing:
 #' \item{hand}{The updated player hand after the turn.}
 #' \item{deck}{The updated deck after the player's turn.}

@@ -4,10 +4,10 @@
 #' This function runs a simulation of a specified number of Blackjack rounds between an automated player and dealer.
 #' The player uses a fixed strategy: they continue drawing cards until reaching a user-defined threshold score (between 12 and 21).
 #' The dealer uses a smart strategy defined in \code{dealer_turn_smart()}.
-#'
+#' @param ... Additional arguments (currently unused; reserved for future extensions)
 #' @param n_sim Number of rounds to simulate (default is 1000)
+#' @param threshold Numeric value between 12 and 21 indicating the score at which the player stops drawing cards (default is 16)
 #' @return A frequency table summarizing the outcomes of all simulated rounds.
-#'
 #' @details
 #' The function prompts the user to enter a threshold between 12 and 21, representing the score at which the player will stop drawing cards.
 #' In each simulated round:
