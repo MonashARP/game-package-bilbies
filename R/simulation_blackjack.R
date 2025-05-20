@@ -20,7 +20,7 @@
 #'   }
 #'
 #' @export
-simulation_blackjack <- function(threshold, n_sim = 1000) {
+simulation_blackjack <- function(threshold = 16, n_sim = 1000) {
 
   if (!is.numeric(threshold) || length(threshold) != 1 ||
       threshold < 1 || threshold > 21) {
