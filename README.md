@@ -1,8 +1,13 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <h1 style="margin: 0;">Multiplayer Blackjack Simulation</h1>
-  <img src="logo/blackjack_sticker.png" width="120" style="margin-left: 20px;" />
-</div>
-
+<table width="100%" style="border-collapse: collapse; border: none;">
+  <tr>
+    <td style="border: none; vertical-align: middle;">
+      <h1 style="margin-bottom: 0;">Multiplayer Blackjack Simulation</h1>
+    </td>
+    <td style="border: none; text-align: right;">
+      <img src="logo/blackjack_sticker.png" width="120" />
+    </td>
+  </tr>
+</table>
 
 ## Overview
 
