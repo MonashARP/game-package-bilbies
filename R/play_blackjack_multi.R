@@ -8,7 +8,7 @@
 #' @return A data frame containing the results of the game, including each player's hand, score, and result against the dealer
 #'
 #' @export
-play_blackjack_multi <- function(n_players = 2, input_fn = readline) {
+play_blackjack_multi <- function(n_players = 2, ..., input_fn = readline) {
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
 

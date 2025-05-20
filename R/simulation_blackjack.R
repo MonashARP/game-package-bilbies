@@ -20,11 +20,11 @@
 #'   }
 #'
 #' @export
-simulation_blackjack <- function(threshold = 16, n_sim = 1000) {
+simulation_blackjack <- function(threshold = 16, n_sim = 1000, ...) {
 
   if (!is.numeric(threshold) || length(threshold) != 1 ||
-      threshold < 1 || threshold > 21) {
-    stop("`threshold` must be a single number between 1 and 21.")
+      threshold < 12 || threshold > 21) {
+    stop("`threshold` must be a single number between 12 and 21.")
   }
 
 
