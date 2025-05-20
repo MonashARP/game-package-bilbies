@@ -1,10 +1,13 @@
-<p align="right">
-
-<img src="logo/blackjack_sticker.png" width="120"/>
-
-</p>
-
-# Multiplayer Blackjack Simulation 
+<table style="width:100%">
+  <tr>
+    <td>
+      <h1>Multiplayer Blackjack Simulation</h1>
+    </td>
+    <td align="right">
+      <img src="logo/blackjack_sticker.png" width="120"/>
+    </td>
+  </tr>
+</table>
 
 ## Overview
 
