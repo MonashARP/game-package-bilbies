@@ -1,11 +1,7 @@
-# Multiplayer Blackjack Simulation 
-
-<br>
-</br>
-
 <p align="right">
   <img src="logo/blackjack_sticker.png" width="120"/>
 </p>
+# Multiplayer Blackjack Simulation 
 
 ## Overview
 
