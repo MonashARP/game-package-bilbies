@@ -8,7 +8,7 @@
 #' @param input_fn holder to obtain player actions (defaults to \code{readline}) which can be overridden to inject fake input for unit tests or if the user want to add fake actions.
 #' @return A data frame containing the results of the game, including each player's hand, score, and result against the dealer
 #' @export
-play_blackjack_multi <- function(n_players = 2, ..., input_fn = readline) {
+play_blackjack_multi <- function(n_players = 2, input_fn = readline, ...) {
   # Create a shuffled deck of cards
   deck <- create_shuffled_deck()
 

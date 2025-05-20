@@ -8,6 +8,10 @@ play_blackjack_multi(n_players = 2, ..., input_fn = readline)
 }
 \arguments{
 \item{n_players}{Number of players (default is 2)}
+
+\item{...}{Additional arguments (currently unused; reserved for future extensions)}
+
+\item{input_fn}{holder to obtain player actions (defaults to \code{readline}) which can be overridden to inject fake input for unit tests or if the user want to add fake actions.}
 }
 \value{
 A data frame containing the results of the game, including each player's hand, score, and result against the dealer

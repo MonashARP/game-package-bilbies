@@ -7,7 +7,9 @@
 play_blackjack(..., input_fn = readline)
 }
 \arguments{
-\item{n_players}{Number of players (default is 1)}
+\item{...}{Additional arguments (currently unused; reserved for future extensions)}
+
+\item{input_fn}{holder to obtain player actions (defaults to \code{readline}) which can be overridden to inject fake input for unit tests or if the user want to add fake actions.}
 }
 \value{
 A list containing the player's hand, dealer's hand, scores, and the result of the game.

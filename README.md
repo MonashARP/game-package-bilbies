@@ -66,7 +66,7 @@ play_blackjack_multi()
 ### Batch Simulation
 
 ```r
-simulation_blackjack(num_rounds = 1000)
+simulation_blackjack(threshold = 16, num_rounds = 1000)
 ```
 
 ## Authors

@@ -7,7 +7,11 @@
 simulation_blackjack(threshold = 16, n_sim = 1000, ...)
 }
 \arguments{
+\item{threshold}{Numeric value between 12 and 21 indicating the score at which the player stops drawing cards (default is 16)}
+
 \item{n_sim}{Number of rounds to simulate (default is 1000)}
+
+\item{...}{Additional arguments (currently unused; reserved for future extensions)}
 }
 \value{
 A frequency table summarizing the outcomes of all simulated rounds.

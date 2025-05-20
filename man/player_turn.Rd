@@ -10,6 +10,8 @@ player_turn(player_hand, deck, input_fn = readline)
 \item{player_hand}{A vector of cards representing the player's hand.}
 
 \item{deck}{A vector of cards representing the remaining deck.}
+
+\item{input_fn}{a holder to obtain player actions (defaults to \code{readline}); can be overridden to inject fake input for unit tests or if the user want to add fake actions.}
 }
 \value{
 A list containing:
