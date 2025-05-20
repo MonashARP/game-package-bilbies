@@ -1,9 +1,9 @@
-<table style="width:100%">
+<table style="width:100%" style="border: none;">
   <tr>
-    <td>
+    <td style="border: none;">
       <h1>Multiplayer Blackjack Simulation</h1>
     </td>
-    <td align="right">
+    <td style="text-align: right; border: none;">
       <img src="logo/blackjack_sticker.png" width="120"/>
     </td>
   </tr>
