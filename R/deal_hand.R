@@ -1,5 +1,8 @@
 #' Deal a Blackjack Hand
-#'
+#'#' @useDynLib blackjack, .registration = TRUE
+#' @importFrom Rcpp evalCpp
+NULL
+
 #' @description
 #' Deals cards from a given deck and removes them from the deck.
 #'
@@ -19,8 +22,5 @@ deal_hand <- function(deck, n = 1) {
     cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
   }
-  hand           <- deck[1:n]
-  remaining_deck <- deck[-(1:n)]
-
-  list(hand = hand, deck = remaining_deck)
+  deal_hand_cpp(deck, n)
 }
