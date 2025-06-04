@@ -8,7 +8,7 @@ card_value.character <- function(x) {
     `7`  = 7,  `8`  = 8,  `9`  = 9, `10` = 10,
     J    = 10,  Q    = 10,  K    = 10,  A    = 11
   )
-  ranks <- sub(".$", "", x)  
+  ranks <- sub(".$", "", x)
   vals  <- unname(values[ranks])
   total <- sum(vals, na.rm = TRUE)
   n_aces <- sum(ranks == "A")
@@ -25,11 +25,11 @@ card_value.card <- function(x) {
     `7`  = 7,  `8`  = 8,  `9`  = 9, `10` = 10,
     J    = 10,  Q    = 10,  K    = 10,  A    = 11
   )
-  raw_cards <- unclass(x)
-  ranks <- sub(".$", "", raw_cards)
-  vals  <- unname(values[ranks])
-  total <- sum(vals, na.rm = TRUE)
-  n_aces <- sum(ranks == "A")
+  card_strings <- field(x, "name")
+  ranks        <- sub(".$", "", card_strings)
+  vals         <- unname(values[ranks])
+  total        <- sum(vals, na.rm = TRUE)
+  n_aces       <- sum(ranks == "A")
   while (total > 21L && n_aces > 0L) {
     total  <- total - 10L
     n_aces <- n_aces - 1L
