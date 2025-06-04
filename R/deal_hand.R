@@ -5,6 +5,7 @@
 #' @param deck A character vector representing the current deck.
 #' @param n Number of cards to deal. Default is 1.
 #'
+#'
 #' @return A list with two elements:
 #' \describe{
 #'   \item{hand}{The dealt cards.}
