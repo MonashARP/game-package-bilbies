@@ -7,11 +7,19 @@
 card_value(cards)
 }
 \arguments{
-\item{cards}{A character vector like "A♠", "10♥"}
+\item{cards}{A character vector of card names such as \code{"A♠"}, \code{"10♥"}, \code{"J♦"}.}
 }
 \value{
-Total hand value (numeric)
+A single numeric value representing the total hand score.
 }
 \description{
-Calculates total hand value, adjusting for Aces
+Calculates the total value of a Blackjack hand. Aces are worth 11 points by default,
+but if the total exceeds 21, Aces are downgraded to 1 point as needed to avoid busting.
+}
+\examples{
+card_value(c("10♠", "A♥"))        # 21
+card_value(c("A♠", "A♦", "9♣"))   # 21 (11 + 1 + 9)
+card_value(c("K♣", "7♦", "6♥"))   # 23 (bust)
+card_value(c("5♣", "3♦", "3♥"))   # 11
+
 }

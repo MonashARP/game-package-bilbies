@@ -11,10 +11,22 @@
 #'   \item{hand}{Character vector of dealt cards (length = n)}
 #'   \item{deck}{The updated deck after removing dealt cards}
 #' }
+#'
+#' @examples
+#' # Create a new shuffled deck
+#' deck <- create_shuffled_deck()
+#'
+#' # Deal 2 cards
+#' result <- deal_hand(deck, 2)
+#' result$hand          # Show dealt cards
+#' length(result$deck)  # Deck should have 2 fewer cards
+#'
+#' # Deal 1 more card
+#' next_result <- deal_hand(result$deck, 1)
+#' next_result$hand
+#'
 #' @export
-
 deal_hand <- function(deck, n = 1) {
-  # Reshuffle the deck after 75% of the cards have been dealt
   if (length(deck) < 52) {
     cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
