@@ -22,3 +22,18 @@ A list with:
 \description{
 Simulates the dealer's decisions in Blackjack.
 }
+\examples{
+# Create a shuffled deck
+deck <- create_shuffled_deck()
+
+# Deal 2 cards to the dealer
+deal_result <- deal_hand(deck, 2)
+dealer_hand <- deal_result$hand
+deck <- deal_result$deck
+
+# Let the dealer play
+result <- dealer_turn(dealer_hand, deck)
+result$hand   # Final dealer hand
+result$total  # Final score
+
+}

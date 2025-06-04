@@ -31,3 +31,22 @@ The dealer will keep drawing cards until:
 - The dealer's hand value is less than the player's hand value.
 If the player has already busted (hand value over 21), the dealer will not draw any more cards and automatically wins.
 }
+\examples{
+# Create a shuffled deck
+deck <- create_shuffled_deck()
+
+# Deal initial hands for player and dealer
+player_result <- deal_hand(deck, 2)
+player_hand <- player_result$hand
+deck <- player_result$deck
+
+dealer_result <- deal_hand(deck, 2)
+dealer_hand <- dealer_result$hand
+deck <- dealer_result$deck
+
+# Run dealer's smart turn
+result <- dealer_turn_smart(dealer_hand, player_hand, deck)
+result$hand   # Final dealer hand
+result$total  # Dealer's total score
+
+}

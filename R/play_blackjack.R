@@ -2,9 +2,20 @@
 #'
 #' @description
 #' This function simulates a full round of Blackjack, allowing the player to hit or stand.
+#'
 #' @param ... Additional arguments (currently unused; reserved for future extensions)
 #' @param input_fn holder to obtain player actions (defaults to \code{readline}) which can be overridden to inject fake input for unit tests or if the user want to add fake actions.
+#'
 #' @return A list containing the player's hand, dealer's hand, scores, and the result of the game.
+#'
+#' @examples
+#' # Simulate a game where the player always chooses to "stand"
+#' fake_input <- function(prompt) "stand"
+#' outcome <- play_blackjack(input_fn = fake_input)
+#' print(outcome$result)
+#' print(outcome$player_hand)
+#' print(outcome$dealer_hand)
+#'
 #' @export
 play_blackjack <- function(..., input_fn = readline) {
   # Create a shuffled deck of cards
@@ -21,12 +32,12 @@ play_blackjack <- function(..., input_fn = readline) {
 
   cat("Dealer shows:", dealer_hand[1], "?\n")
 
-
   # Player's turn
   str   <- player_turn(player_hand, deck, input_fn)
   player_hand  <- str$hand
   deck         <- str$deck
   player_score <- str$total
+
   # Dealer's turn
   str <- dealer_turn(dealer_hand, deck)
   dealer_hand  <- str$hand

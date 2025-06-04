@@ -22,3 +22,18 @@ A list containing:
 \description{
 Handles the player's turn in a Blackjack game, allowing them to hit or stand.
 }
+\examples{
+# Example: Player always stands immediately
+deck <- create_shuffled_deck()
+initial_hand <- deal_hand(deck, 2)
+player_hand <- initial_hand$hand
+deck <- initial_hand$deck
+
+# Fake input function that always returns "stand"
+fake_input <- function(prompt) "stand"
+
+result <- player_turn(player_hand, deck, input_fn = fake_input)
+print(result$hand)
+print(result$total)
+
+}

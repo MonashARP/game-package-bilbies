@@ -22,7 +22,6 @@ The player uses a fixed strategy: they continue drawing cards until reaching a u
 The dealer uses a smart strategy defined in \code{dealer_turn_smart()}.
 }
 \details{
-The function prompts the user to enter a threshold between 12 and 21, representing the score at which the player will stop drawing cards.
 In each simulated round:
 \enumerate{
   \item A shuffled Blackjack shoe is created.
@@ -30,5 +29,12 @@ In each simulated round:
   \item The player automatically draws until reaching or exceeding the threshold.
   \item The dealer plays according to a smart strategy.
   \item The outcome is determined as "Win", "Lose", or "Push" (draw).
-  }
+}
+}
+\examples{
+# Run a short simulation of 10 rounds with a player threshold of 17
+set.seed(123)
+simulation_result <- simulation_blackjack(threshold = 17, n_sim = 10)
+print(simulation_result)
+
 }

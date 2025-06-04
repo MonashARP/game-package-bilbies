@@ -1,6 +1,6 @@
 #' Dealer Turn Logic
 #'
-#'@description
+#' @description
 #' Simulates the dealer's decisions in Blackjack.
 #'
 #' @param dealer_hand The dealer's current hand
@@ -12,6 +12,20 @@
 #'   \item{deck}{The updated deck after removing drawn cards.}
 #'   \item{total}{The final total value of the dealer's hand.}
 #' }
+#'
+#' @examples
+#' # Create a shuffled deck
+#' deck <- create_shuffled_deck()
+#'
+#' # Deal 2 cards to the dealer
+#' deal_result <- deal_hand(deck, 2)
+#' dealer_hand <- deal_result$hand
+#' deck <- deal_result$deck
+#'
+#' # Let the dealer play
+#' result <- dealer_turn(dealer_hand, deck)
+#' result$hand   # Final dealer hand
+#' result$total  # Final score
 #'
 #' @export
 dealer_turn <- function(dealer_hand, deck) {

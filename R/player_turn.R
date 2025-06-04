@@ -11,6 +11,20 @@
 #' \item{deck}{The updated deck after the player's turn.}
 #' \item{total}{The total value of the player's hand.}
 #'
+#' @examples
+#' # Example: Player always stands immediately
+#' deck <- create_shuffled_deck()
+#' initial_hand <- deal_hand(deck, 2)
+#' player_hand <- initial_hand$hand
+#' deck <- initial_hand$deck
+#'
+#' # Fake input function that always returns "stand"
+#' fake_input <- function(prompt) "stand"
+#'
+#' result <- player_turn(player_hand, deck, input_fn = fake_input)
+#' print(result$hand)
+#' print(result$total)
+#'
 #' @export
 player_turn <- function(player_hand, deck, input_fn = readline) {
   stand <- FALSE

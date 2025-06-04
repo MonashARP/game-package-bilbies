@@ -17,3 +17,12 @@ A list containing the player's hand, dealer's hand, scores, and the result of th
 \description{
 This function simulates a full round of Blackjack, allowing the player to hit or stand.
 }
+\examples{
+# Simulate a game where the player always chooses to "stand"
+fake_input <- function(prompt) "stand"
+outcome <- play_blackjack(input_fn = fake_input)
+print(outcome$result)
+print(outcome$player_hand)
+print(outcome$dealer_hand)
+
+}

@@ -21,9 +21,26 @@
 #'   \item{total}{The final total value of the dealer's hand.}
 #'          }
 #'
+#' @examples
+#' # Create a shuffled deck
+#' deck <- create_shuffled_deck()
+#'
+#' # Deal initial hands for player and dealer
+#' player_result <- deal_hand(deck, 2)
+#' player_hand <- player_result$hand
+#' deck <- player_result$deck
+#'
+#' dealer_result <- deal_hand(deck, 2)
+#' dealer_hand <- dealer_result$hand
+#' deck <- dealer_result$deck
+#'
+#' # Run dealer's smart turn
+#' result <- dealer_turn_smart(dealer_hand, player_hand, deck)
+#' result$hand   # Final dealer hand
+#' result$total  # Dealer's total score
+#'
 #' @export
 dealer_turn_smart <- function(dealer_hand, player_hand, deck) {
-  # If the player already busted, dealer then not draw cards since dealer already win
   if (card_value(player_hand) > 21) {
     return(list(
       hand  = dealer_hand,
@@ -32,9 +49,6 @@ dealer_turn_smart <- function(dealer_hand, player_hand, deck) {
     ))
   }
 
-  # 1. Otherwise, keep drawing while:
-  # - dealer under 17, or
-  # - dealer is still behind the player
   while (
     card_value(dealer_hand) < 17 ||
     (card_value(dealer_hand) == 17 && sum(card_value(dealer_hand) == 11) > 0) ||
@@ -45,7 +59,6 @@ dealer_turn_smart <- function(dealer_hand, player_hand, deck) {
     deck        <- res$deck
   }
 
-  # Return final hand, deck, and total
   list(
     hand  = dealer_hand,
     deck  = deck,
