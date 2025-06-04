@@ -1,35 +1,29 @@
-test_that("deal_hand returns correct number of cards and updates deck", {
-  deck <- create_shuffled_deck()
-  result <- deal_hand(deck, 2)
+test_that("simulation_blackjack returns expected structure", {
+  set.seed(123)  # Make the test reproducible
+  result <- simulation_blackjack(n_sim = 10, threshold = 16)
 
-  expect_type(result, "list")
-  expect_named(result, c("hand", "deck"))
-  expect_length(result$hand, 2)
-  expect_length(result$deck, length(deck) - 2)
+  # Check it's a table
+  expect_s3_class(result, "table")
 
-  # Check that counts of cards have decreased properly
-  orig_counts <- table(deck)
-  hand_counts <- table(result$hand)
-  new_counts <- table(result$deck)
+  # Check names are among valid outcomes
+  expect_true(all(names(result) %in% c("Win", "Lose", "Push")))
 
-  # For all cards in hand, check that updated deck has correct reduced counts
-  for (card in names(hand_counts)) {
-    expect_equal(orig_counts[card], hand_counts[card] + new_counts[card])
-  }
+  # Check the total number of simulations equals 10
+  expect_equal(sum(result), 10)
 })
 
-test_that("dealer_turn draws until ≥17 when starting very low", {
-  # Create a deck of 5 cards
-  deck <- rep("5♠", 208)
+test_that("simulation_blackjack works at edge thresholds", {
+  # Edge cases
+  res_low  <- simulation_blackjack(n_sim = 5, threshold = 12)
+  res_high <- simulation_blackjack(n_sim = 5, threshold = 21)
 
-  # Start the dealer at 11, and make the player score 16 and they stand
-  dealer_hand <- c("7♠", "5♥")
-  player_hand <- c("10♠", "6♠")
+  expect_equal(sum(res_low), 5)
+  expect_equal(sum(res_high), 5)
+})
 
-  result <- dealer_turn(dealer_hand, deck)
-
-  # Dealer:  11 + 5 + 5 = 21
-  expect_equal(result$total, 17L)
-  expect_length(result$hand, 3L)
-  expect_length(result$deck, 207L)
+test_that("simulation_blackjack throws error for invalid thresholds", {
+  expect_error(simulation_blackjack(threshold = 11), "must be a single number between 12 and 21")
+  expect_error(simulation_blackjack(threshold = 22), "must be a single number between 12 and 21")
+  expect_error(simulation_blackjack(threshold = "sixteen"), "must be a single number between 12 and 21")
+  expect_error(simulation_blackjack(threshold = c(16, 17)), "must be a single number between 12 and 21")
 })
