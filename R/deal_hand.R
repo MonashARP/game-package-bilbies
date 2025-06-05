@@ -1,35 +1,33 @@
+#' @useDynLib blackjackR, .registration = TRUE
+#' @importFrom Rcpp evalCpp
+#' @name blackjack-package
+NULL
 #' Deal a Blackjack Hand
 #'
-#' @description
-#' Deals cards from a given deck and removes them from the deck.
+#' Deals cards from a given deck and removes them from the deck using C++ for performance.
 #'
-#' @param deck A character vector representing the current deck (e.g., output of `create_shuffled_deck()`)
-#' @param n Number of cards to deal (default = 2)
+#' @param deck A character vector representing the current deck (e.g., output of `create_shuffled_deck()`).
+#' @param n Number of cards to deal (default = 2).
 #'
 #' @return A list with:
 #' \describe{
-#'   \item{hand}{Character vector of dealt cards (length = n)}
-#'   \item{deck}{The updated deck after removing dealt cards}
+#'   \item{hand}{Character vector of dealt cards (length = n).}
+#'   \item{deck}{The updated deck after removing dealt cards.}
 #' }
 #'
 #' @examples
-#' # Create a new shuffled deck
 #' deck <- create_shuffled_deck()
-#'
-#' # Deal 2 cards
 #' result <- deal_hand(deck, 2)
-#' result$hand          # Show dealt cards
-#' length(result$deck)  # Deck should have 2 fewer cards
-#'
-#' # Deal 1 more card
-#' next_result <- deal_hand(result$deck, 1)
-#' next_result$hand
+#' result$hand
+#' length(result$deck)
 #'
 #' @export
-deal_hand <- function(deck, n = 1) {
-  if (length(deck) < 52) {
+deal_hand <- function(deck, n = 2) {
+  if (length(deck) < n) {
     cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
   }
+
   deal_hand_cpp(deck, n)
 }
+
