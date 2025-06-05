@@ -24,7 +24,6 @@ NULL
 #' @export
 deal_hand <- function(deck, n = 2) {
   if (length(deck) < n) {
-    cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
   }
   out <- deal_hand_cpp(deck, n)
