@@ -26,6 +26,12 @@ vec_ptype2.card.card <- function(x, y, ...) card(character(), character())
 vec_cast.card.card <- function(x, to, ...) card(field(x, "rank"), field(x, "suit"))
 
 #' Get Suit of Card
+#'
+#' Extracts the suit from a card object.
+#'
+#' @param x A card object.
+#' @return A character vector of card suits.
+#'
 #' @export
 card_suit <- function(x) {
   UseMethod("card_suit")
@@ -36,6 +42,11 @@ card_suit.card <- function(x) {
 }
 
 #' Get Rank of Card
+#'
+#' Extracts the rank from a card object.
+#'
+#' @param x A card object.
+#' @return A character vector of card ranks.
 #' @export
 card_rank <- function(x) {
   UseMethod("card_rank")
@@ -45,7 +56,12 @@ card_rank.card <- function(x) {
   field(x, "rank")
 }
 
-#' Check if Card is a Face Card (J, Q, K)
+#' Check if Card is a Face Card
+#'
+#' Determines if the card is a face card (Jack, Queen or King)
+#'
+#' @param x A card object.
+#' @return A logical vector: True for face cards, False otherwise.#'
 #' @export
 card_is_face <- function(x) {
   UseMethod("card_is_face")
