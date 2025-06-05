@@ -9,144 +9,206 @@ vignette: >
 
 ## Introduction
 
+### How Blackjack Works
+Blackjack is a classic card game where the goal is to beat the dealer by getting a hand of cards total as close to 21 as possible without going over.
+
+**Basic Rules:** 
+-   Each player, including the dealer, is dealt two cards.
+-   Cards 2–10 are worth their face value; J, Q, K are worth 10.
+-   Aces are special: they count as 11, but automatically switch to 1 if counting as 11 would cause a bust.
+
+**Player’s Turn:**
+-   Players can choose to hit (take another card) or stand (keep their hand).
+-   The turn continues until the player stands or the hand value exceeds 21 (bust).
+
+**Auto/Smart Player Logic:**
+-   Automated players stop hitting when they reach or exceed a threshold (e.g. 17).
+
+**Dealer’s Turn:**
+-   The dealer must hit until their hand total is at least 17.
+-   A “smart” dealer version can also consider the player’s total before deciding.
+
+**Game Result:**
+-   If the player busts, the dealer wins.
+-   If the dealer busts, the player wins.
+-   If neither busts, the higher hand total wins.
+-   Ties result in a "push" — no winner.
+
+### `blackjack` package
 The `blackjack` package provides tools to simulate the card game of Blackjack in R. It supports single and multiplayer modes, interactive or automated game, and dealer decision logic. 
 
 
-## Installation
-
-To install from source:
-
-```r
-devtools::install_github("MonashARP/game-package-bilbies", dependencies = TRUE)
-```
-
 ## Function Overview and Examples 
+
+Initialise the game by loading the library: 
+
+```{r}
+library(blackjack)
+```
 
 The package includes several functions to facilitate the game:
 
 ### 1. `create_shuffled_deck()`
 
-Creates a shuffled Blackjack shoe (default = 208 cards):
+Creates a shuffled Blackjack shoe (default = 208 cards). Checks the number of cards in the shuffled deck and inspects first `n` number of card: 
 
-```r
-deck <- create_shuffled_deck()
+```{r}
+# Create a shuffled deck of cards
+deck <- create_shuffled_deck() 
+```
+
+```{r}
+# Check how many cards are in the deck
 length(deck)
-#> [1] 208
-head(deck, 5)
-#> [1] "J♦" "K♠" "5♥" "3♥" "7♦"
+```
+
+```{r}
+# Show the first 5 cards in the deck
+head(deck, 5) 
 ```
 
 ### 2. `deal_hand()`
 
-Deals cards from the deck and updates it:  
+Deals cards from the deck, shows the cards dealt, and updates it:  
 
-```r
-deal <- deal_hand(deck, 2)
-deal$hand
-#> [1] "J♦" "K♠"
+```{r}
+# Deal 2 cards from the deck
+deal <- deal_hand(deck, 2)  
+```
 
- # update the deck
+```{r}
+# Show the cards dealt
+deal$hand 
+```
+
+```{r}
+# Update the deck to remove dealt cards
 deck <- deal$deck 
-length(deck)
-#> [1] 206
+
+# Check how many cards are left in the deck
+length(deck) 
 ```
 
 ### 3. `card_value()`
 
-Calculates the score of a hand:
+Calculates the total value of a hand, adjusting the Ace from 11 to 1 if needed to avoid busting: 
 
-```r
+```{r}
+# Create a hand (example: with an Ace and an 8)
 hand <- c("A♣", "8♦")
-card_value(hand)
-#> [1] 19
-
-card_value(c("A♣", "8♦", "5♠"))
-#> [1] 14
 ```
+
+```{r}
+# Get the total value of the hand (example: the result should be 19 from the example)
+card_value(hand) 
+```
+
+```{r}
+# Get the value of a hand (example: with Ace downgraded to 1, 8, and 5, the result should be 14)
+card_value(c("A♣", "8♦", "5♠")) 
+```
+
 
 ### 4. `player_turn()`
 
 Simulates a player's turn, allowing them to hit or stand:
 
-```r
+```{r}
+# Deal 2 cards to create a player hand
 hand <- deal_hand(deck, 2)$hand
-player_turn(hand, deck)
-#> Your hand: 5♥ 3♥  (Total = 8 )
-#> Prompts for "Hit (h) or stand (s)?" input in console
 ```
+
+```{r eval = FALSE}
+# Simulates a player’s turn using the given hand and deck.
+# Note: player_turn() requires user input and cannot be executed in a non-interactive setting.
+player_turn(hand, deck)
+```
+
 
 ### 5. `auto_player_turn()`
 
 Automatically draws cards until a threshold:
 
-```r
+```{r}
+# Deal 2 cards to create a player hand
 hand <- deal_hand(deck, 2)$hand
+
+# Simulate an automatic player turn with a threshold of 17
 result <- auto_player_turn(hand, deck, threshold = 17)
+```
+
+```{r}
+# Show the final hand after the turn
 result$hand
-#> [1] "5♥" "3♥" "5♥" "3♥" "7♦"
+
+# Show the total value of the final hand
 result$total
-#> 23
 ```
 
 ### 6. `dealer_turn()`
 
 Simulates the dealer's turn, following standard rules:
 
-```r
+```{r}
+# Deal 2 cards to create the dealer's starting hand
 hand <- deal_hand(deck, 2)$hand
+
+# Simulate the dealer's turn
 result <- dealer_turn(hand, deck)
-#> Dealer's hand: 5♥ 3♥ 5♥ 3♥ 7♦ Total: 23 
+
+# Show the dealer's final hand
 result$hand
-#> [1] "5♥" "3♥" "5♥" "3♥" "7♦"
+
+# Show the total value of the dealer's hand
 result$total
-#> [1] 23
 ```
+
 
 ### 7. `dealer_turn_smart()`
 
 Simulates the dealer's turn with a smart strategy, considering the player's hand:
 
-```r
+```{r}
+# Deal 2 cards for the dealer's starting hand
 dealer_hand <- deal_hand(deck, 2)$hand
-player_hand <- c("10♦", "8♣")  
+
+# Set a fixed player hand for comparison
+player_hand <- c("10♦", "8♣")
+
+# Simulate the dealer's turn using a strategy that reacts to the player's hand
 dealer_turn_smart(dealer_hand, player_hand, deck)
-#> returns list with final hand and total score
 ```
+
 
 ### 8. `play_blackjack()`
 
 Simulates a full game of Blackjack, allowing for player and dealer turns:
 
-```r
+```{r}
 play_blackjack()
-#> Dealer shows: 4♠ ?
-#> Your hand: 2♣ 5♥  (Total = 7 )
-#> Prompts for "Hit (h) or stand (s)?" input in console
-#> Returns final hands and result
 ```
+
 
 ### 9. `play_blackjack_multi()`
 
 Simulates a full round for multiple players vs the dealer:
 
-```r
+```{r}
 play_blackjack_multi(2)
-#> Returns data frame of hands, scores, and results
 ```
+
 
 ### 10. `simulation_blackjack()`
 
 Simulates multiple automated rounds of Blackjack: 
 
-```r
+```{r}
 simulation_blackjack(100)
-#> Prompts for threshold
-#> Returns table like:
-#> Outcome
-#> Lose Push  Win 
-#>  47    4   49 
 ```
+
 
 ## Conclusion
 
 The blackjack package enables users to simulate Blackjack games in R, supporting both interactive and automated gameplay. It offers tools for dealing cards, calculating scores, managing player and dealer turns, and running simulations. This makes it a practical and engaging tool for exploring Blackjack mechanics and strategies through code.
+
+
