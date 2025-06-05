@@ -24,8 +24,11 @@ NULL
 #' @export
 deal_hand <- function(deck, n = 2) {
   if (length(deck) < n) {
-    cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
+  }
+  # Ensure passing character vector to c++
+  if (!is.character(deck)) {
+    deck <- vctrs::field(deck, "name")
   }
 
   deal_hand_cpp(deck, n)
