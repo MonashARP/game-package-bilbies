@@ -29,11 +29,24 @@ It includes functionality for both user-controlled and automated players, allows
 
 This package is built for use in local development and testing environments.
 
-``` r
-# To install from your local working directory:
-devtools::install()
+**For public users** 
 
-# To load for development:
+Install the development version of `blackjack` from GitHub:
+```r
+# install.packages("devtools"), then call: 
+devtools::install_github("https://github.com/MonashARP/game-package-bilbies")
+```
+
+**For collaborators** 
+
+Install the package during development:
+``` r
+# From your local working directory 
+devtools::install()
+```
+
+Load all functions without installing (for quick testing):
+```r
 devtools::load_all()
 ```
 
