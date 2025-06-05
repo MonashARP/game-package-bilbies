@@ -1,27 +1,28 @@
 #' Deal cards from the deck
 #'
-#' Deals `n` cards from a given deck and returns a list containing the dealt hand and the remaining deck.
+#' @description
+#' Deals cards from a given deck and removes them from the deck.
 #'
-#' @param deck A character vector representing the current deck.
-#' @param n Number of cards to deal. Default is 1.
+#' @param deck A character vector representing the current deck (e.g., output of `create_shuffled_deck()`)
+#' @param n Number of cards to deal (default = 2)
 #'
-#'
-#' @return A list with two elements:
+#' @return A list with:
 #' \describe{
-#'   \item{hand}{The dealt cards.}
-#'   \item{deck}{The updated deck with dealt cards removed.}
+#'   \item{hand}{Character vector of dealt cards (length = n)}
+#'   \item{deck}{The updated deck after removing dealt cards}
 #' }
 #' @export
-#'
-#' @examples
-#' deck <- create_shuffled_deck()
-#' out <- deal_hand(deck, 2)
-#' out$hand
-#' length(out$deck)
 
 deal_hand <- function(deck, n = 1) {
-  hand <- deck[1:n]
-  deck <- deck[-(1:n)]
-  list(hand = hand, deck = deck)
+  # Reshuffle the deck after 75% of the cards have been dealt
+  if (length(deck) < 52) {
+    cat("Reshuffle cards...\n")
+    deck <- create_shuffled_deck()
+  }
+
+  hand           <- deck[1:n]
+  remaining_deck <- deck[-(1:n)]
+
+  list(hand = hand, deck = remaining_deck)
 }
 
