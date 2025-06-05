@@ -4,34 +4,27 @@
 \alias{deal_hand}
 \title{Deal a Blackjack Hand}
 \usage{
-deal_hand(deck, n = 1)
+deal_hand(deck, n = 2)
 }
 \arguments{
-\item{deck}{A character vector representing the current deck (e.g., output of `create_shuffled_deck()`)}
+\item{deck}{A character vector representing the current deck (e.g., output of `create_shuffled_deck()`).}
 
-\item{n}{Number of cards to deal (default = 2)}
+\item{n}{Number of cards to deal (default = 2).}
 }
 \value{
 A list with:
 \describe{
-  \item{hand}{Character vector of dealt cards (length = n)}
-  \item{deck}{The updated deck after removing dealt cards}
+  \item{hand}{Character vector of dealt cards (length = n).}
+  \item{deck}{The updated deck after removing dealt cards.}
 }
 }
 \description{
-Deals cards from a given deck and removes them from the deck.
+Deals cards from a given deck and removes them from the deck using C++ for performance.
 }
 \examples{
-# Create a new shuffled deck
 deck <- create_shuffled_deck()
-
-# Deal 2 cards
 result <- deal_hand(deck, 2)
-result$hand          # Show dealt cards
-length(result$deck)  # Deck should have 2 fewer cards
-
-# Deal 1 more card
-next_result <- deal_hand(result$deck, 1)
-next_result$hand
+result$hand
+length(result$deck)
 
 }
