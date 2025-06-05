@@ -28,7 +28,30 @@ create_shuffled_deck <- function(noOfDecks = 4) {
   )
   shoe_str <- rep(single_deck, times = noOfDecks)
   shuffled <- sample(shoe_str)
-  rank_text   <- sub(".$", "", shuffled)
+  # 1) Extract the “raw” rank codes: "2","3",…,"10","J","Q","K","A"
+  raw_rank <- sub(".$", "", shuffled)
+
+  # 2) Map each raw_rank → English word
+  #    We define a small helper function, then vectorize via vapply.
+  rank_to_word <- function(r) {
+    switch(r,
+           "2"  = "Two",
+           "3"  = "Three",
+           "4"  = "Four",
+           "5"  = "Five",
+           "6"  = "Six",
+           "7"  = "Seven",
+           "8"  = "Eight",
+           "9"  = "Nine",
+           "10" = "Ten",
+           "J"  = "Jack",
+           "Q"  = "Queen",
+           "K"  = "King",
+           "A"  = "Ace",
+           NA_character_
+    )
+  }
+  rank_text <- unname(vapply(raw_rank, rank_to_word, character(1)))
   suit_symbol <- sub("^.*([♠♥♦♣])$", "\\1", shuffled)
   suit_name <- function(sym) {
     switch(sym,
@@ -39,7 +62,7 @@ create_shuffled_deck <- function(noOfDecks = 4) {
            NA_character_
     )
   }
-  suit_word <- vapply(suit_symbol, suit_name, character(1))
+  suit_word <- unname(vapply(suit_symbol, suit_name, character(1)))
   is_face   <- rank_text %in% c("J", "Q", "K")
   new_rcrd(
     list(
