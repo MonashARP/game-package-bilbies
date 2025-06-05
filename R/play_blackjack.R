@@ -1,3 +1,5 @@
+#' @importFrom vctrs
+NULL
 #' Play One Round of Blackjack with Action
 #'
 #' @description
@@ -29,8 +31,7 @@ play_blackjack <- function(..., input_fn = readline) {
   str <- deal_hand(deck, 2)
   dealer_hand <- str$hand
   deck        <- str$deck
-
-  cat("Dealer shows:", dealer_hand[1], "?\n")
+  print(paste("Dealer shows:", vctrs::vec_data(dealer_hand)$name[1], "?"), quote = FALSE)
 
   # Player's turn
   str   <- player_turn(player_hand, deck, input_fn)

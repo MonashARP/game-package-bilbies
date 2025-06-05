@@ -31,10 +31,18 @@ player_turn <- function(player_hand, deck, input_fn = readline) {
   total <- card_value(player_hand)
 
   while (!stand && total < 22) {
-    cat("Your hand:", paste(player_hand, collapse = " "), " (Total =", total, ")\n")
+    print(
+      paste(
+        "Your hand:",
+        paste(format(player_hand), collapse = " "),
+        "(Total =",
+        total, ")"
+      ),
+      quote = FALSE
+    )
 
     action <- tolower(input_fn("Hit (h) or stand (s)? "))
-    if (action == "hit" | action == "h") {
+    if (action == "hit" || action == "h") {
       str <- deal_hand(deck, 1)
       new_card <- str$hand
       deck        <- str$deck
@@ -42,16 +50,24 @@ player_turn <- function(player_hand, deck, input_fn = readline) {
 
       total <- card_value(player_hand)
 
-      cat("You drew", new_card, "\n")
+      print(paste("You drew", format(new_card)), quote = FALSE)
 
-    } else if (action == "stand" | action == "s") {
+    } else if (action == "stand" || action == "s") {
       stand <- TRUE
-      cat("You stand at", total, "\n")
+      print(paste("You stand at", total), quote = FALSE)
 
     } else {
-      cat("Invalid choice - please type 'hit', 'h' or 'stand', 's'.\n")
+      print(
+        "Invalid choice - please type 'hit', 'h' or 'stand', 's'.",
+        quote = FALSE
+      )
     }
   }
 
-  list(hand = player_hand, deck = deck, total = total)
+  return(list(
+    hand  = player_hand,
+    deck  = deck,
+    total = total
+  ))
 }
+

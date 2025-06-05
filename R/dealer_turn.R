@@ -39,7 +39,6 @@ dealer_turn <- function(dealer_hand, deck) {
     dealer_hand <- c(dealer_hand, new_card)
   }
   total <- card_value(dealer_hand)
-  cat("Dealer's hand:", paste(dealer_hand, collapse = " "), "Total:", total, "\n")
-
+  print(paste("Dealer's hand:", paste(format(dealer_hand), collapse = " "), "Total:", total), quote = FALSE)
   list(hand = dealer_hand, deck = deck, total = total)
 }
