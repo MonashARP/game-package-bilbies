@@ -1,4 +1,4 @@
-#' @useDynLib blackjackR, .registration = TRUE
+#' @useDynLib blackjack, .registration = TRUE
 #' @importFrom Rcpp evalCpp
 #' @name blackjack-package
 NULL
