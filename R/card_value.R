@@ -1,4 +1,4 @@
-#' @importFrom vctrs
+#' @importFrom vctrs field
 NULL
 #' Score a Blackjack Hand
 #'

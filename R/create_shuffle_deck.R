@@ -76,3 +76,9 @@ print.card <- function(x, ...) {
   }
   invisible(x)
 }
+
+#' @export
+as.character.card <- function(x, ...) {
+  format(x)
+}
+
