@@ -31,8 +31,5 @@ deal_hand <- function(deck, n = 1) {
     cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
   }
-  hand           <- deck[1:n]
-  remaining_deck <- deck[-(1:n)]
-
-  list(hand = hand, deck = remaining_deck)
+  deal_hand_cpp(deck, n)
 }
