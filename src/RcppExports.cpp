@@ -11,12 +11,12 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // deal_hand_cpp
-List deal_hand_cpp(CharacterVector deck, int n);
+List deal_hand_cpp(RObject deck, int n);
 RcppExport SEXP _blackjack_deal_hand_cpp(SEXP deckSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< CharacterVector >::type deck(deckSEXP);
+    Rcpp::traits::input_parameter< RObject >::type deck(deckSEXP);
     Rcpp::traits::input_parameter< int >::type n(nSEXP);
     rcpp_result_gen = Rcpp::wrap(deal_hand_cpp(deck, n));
     return rcpp_result_gen;
