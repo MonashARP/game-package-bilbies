@@ -172,17 +172,21 @@ dealer_turn_smart(dealer_hand, player_hand, deck)
 
 Simulates a full game of Blackjack, allowing for player and dealer turns:
 
-```{r eval = FALSE}
-play_blackjack()
+```{r}
+# Normally the game will require input from the user to continue, therefore fake inputs are needed for the game to run here
+# Fake inputs will be alway stand
+play_blackjack(input_fn = function(prompt) "s")
 ```
 
 
 ### 9. `play_blackjack_multi()`
 
-Simulates a full round for multiple players vs the dealer:
+Simulates a full round for multiple players vs the dealer, the game can play with unlimited number of players, but here we will use 2 players as an example:
 
-```{r eval = FALSE}
-play_blackjack_multi(2)
+```{r}
+# Normally the game will require input from the user to continue, therefore fake inputs are needed for the game to run here
+# Fake inputs will be alway stand
+play_blackjack_multi(2, input_fn = function(prompt) "s")
 ```
 
 
