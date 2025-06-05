@@ -2,20 +2,15 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-List deal_hand_cpp(CharacterVector deck, int n = 1) {
-  // Extract the first n cards from the deck as hand
-  CharacterVector hand = deck[Rcpp::Range(0, n - 1)];
-  // Create vector to hold the remaining cards
-  CharacterVector remaining_deck(deck.size() - n);
+List deal_hand_cpp(RObject deck, int n) {
+  Function br("[");
+  IntegerVector idx = seq_len(n);      // 1, 2, … n
 
-  // Fill the remaining_deck with the rest of the cards
-  for (int i = 0; i < remaining_deck.size(); ++i) {
-    remaining_deck[i] = deck[i + n];
-  }
-
-  // Return list back to R
   return List::create(
-    _["hand"] = hand,
-    _["deck"] = remaining_deck
-  );}
+    _["hand"] = br(deck, idx),         // deck[1:n]
+    _["deck"] = br(deck, -idx)         // deck[-(1:n)]
+  );
+}
+
+
 

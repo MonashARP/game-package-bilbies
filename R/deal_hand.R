@@ -27,7 +27,7 @@ deal_hand <- function(deck, n = 2) {
     cat("Reshuffle cards...\n")
     deck <- create_shuffled_deck()
   }
-
-  deal_hand_cpp(deck, n)
+  out <- deal_hand_cpp(deck, n)
+  list(hand = out$hand, deck = out$deck)
 }
 
