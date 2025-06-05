@@ -61,19 +61,8 @@ format.card <- function(x, ...) {
 #' @export
 print.card <- function(x, ...) {
   cat("card[", vec_size(x), "]\n", sep = "")
-  df <- data.frame(
-    name        = field(x, "name"),
-    rank        = field(x, "rank"),
-    suit_symbol = field(x, "suit_symbol"),
-    suit        = field(x, "suit"),
-    is_face     = field(x, "is_face"),
-    stringsAsFactors = FALSE
-  )
-  print(utils::head(df), row.names = FALSE)
-  n_rest <- vec_size(x) - nrow(utils::head(df))
-  if (n_rest > 0) {
-    cat(" … and", n_rest, "more cards\n")
-  }
+  card_names <- field(x, "name")
+  cat(paste(card_names, collapse = " "), "\n")
   invisible(x)
 }
 
