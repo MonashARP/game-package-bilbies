@@ -4,7 +4,7 @@
 \alias{card_value}
 \title{Score a Blackjack Hand}
 \usage{
-card_value(cards)
+card_value(x)
 }
 \arguments{
 \item{cards}{A character vector of card names such as \code{"A♠"}, \code{"10♥"}, \code{"J♦"}.}
