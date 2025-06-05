@@ -1,5 +1,5 @@
 #' @useDynLib blackjack, .registration = TRUE
-#' @importFrom Rcpp evalCpp
+#' @importFrom Rcpp evalCpp vctrs
 #' @name blackjack-package
 NULL
 #' Deal a Blackjack Hand
@@ -23,7 +23,8 @@ NULL
 #'
 #' @export
 deal_hand <- function(deck, n = 2) {
-  if (length(deck) < n) {
+  if (vec_size(deck) < 0.25 * vec_size(create_shuffled_deck())) {
+    cat("creating new deck...\n")
     deck <- create_shuffled_deck()
   }
   out <- deal_hand_cpp(deck, n)
