@@ -34,3 +34,25 @@ test_that("card_value handles Aces correctly", {
   expect_equal(card_value(c("A♠", "A♣", "9♠", "K♣")), 21)
   expect_equal(card_value(c("A♠", "A♣", "9♠", "K♣", "2♦")), 23)
 })
+
+test_that("card_value.default() errors on unsupported classes", {
+  expect_error(
+    card_value(42),
+    "`card_value\\(\\) was not built to handle this class yet 'numeric'\\."
+  )
+  expect_error(
+    card_value(factor(c("A♠", "K♣"))),
+    "`card_value\\(\\) was not built to handle this class yet 'factor'\\."
+  )
+  expect_error(
+    card_value(list("A♠", "5♦")),
+    "`card_value\\(\\) was not built to handle this class yet 'list'\\."
+  )
+})
+
+test_that("card_value.card working as expected by sum first two cards to 16 in a fixed shuffle with vector", {
+  set.seed(435)
+  deck <- create_shuffled_deck(noOfDecks = 1)
+  expect_identical(card_value(deck[1:2]), 16)
+})
+
