@@ -31,5 +31,14 @@ Work basically the same as dealer_turn but with threshold input by user instead 
 Call deal_hand() to draw card so it use the same logic from deal_turn as well
 }
 \examples{
-auto_player_turn(player_hand = hand, deck = deck, threshold = 17)
+# 1) Start with a fresh shuffled deck:
+deck <- create_shuffled_deck()
+
+# 2) Deal two cards to form the initial player hand:
+top_two <- deal_hand(deck, 2)
+hand <- top_two$hand
+deck <- top_two$deck
+
+# 3) Now call auto_player_turn() with threshold = 17:
+auto_player_turn(player_hand = hand, deck = deck, threshold = 17)#' @export
 }

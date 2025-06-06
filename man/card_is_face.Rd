@@ -39,3 +39,7 @@ specificly designed for vctrs "card" records.
 - For any other class, \code{card_is_face.default(x)} throws an error indicating that only
   \code{"card"} or \code{character} inputs are accepted.
 }
+\examples{
+deck <- create_shuffled_deck()
+card_is_face(deck)
+}

@@ -6,31 +6,28 @@
 \usage{
 create_shuffled_deck(noOfDecks = 4)
 }
-\arguments{
-\item{noOfDecks}{Integer (≥1). Number of decks to include in the shoe (default = 4). A typical Blackjack shoe contains 4 to 8 decks.}
-}
 \value{
-A [vctrs][vctrs::new_rcrd] “card” record vector of length `52 * noOfDecks`. Each element is an S3 object of class `"card"` with these fields:
+A [vctrs][vctrs::new_rcrd] "card" record vector of length `52 * noOfDecks`. Each element is an S3 object of class "card" with these fields:
 \itemize{
-  \item \code{name}       – character, e.g. "2♣", "A♠"
-  \item \code{rank}       – character, one of "Two", "Three", …, "Ace"
-  \item \code{suit_symbol}– character, one of "♠", "♥", "♦", "♣"
-  \item \code{suit}       – character, one of "Spade", "Heart", "Diamond", "Club"
-  \item \code{is_face}    – logical; TRUE for Jack/Queen/King, FALSE otherwise
+  \item \code{name}       - character, e.g. "2\\u2663", "A\\u2660"
+  \item \code{rank}       - character, one of "Two", "Three", ..., "Ace"
+  \item \code{suit_symbol}- character, one of "\\u2660", "\\u2665", "\\u2666", "\\u2663"
+  \item \code{suit}       - character, one of "Spade", "Heart", "Diamond", "Club"
+  \item \code{is_face}    - logical; TRUE for Jack/Queen/King, FALSE otherwise
 }
 After update, the creating_shuffle_deck now able to return a vctrs record with the above fields instead of just a character vector.
 }
 \description{
 Creates a shuffled Blackjack shoe consisting of multiple standard 52-card decks combined.
-Each standard deck includes cards from all four suits (\code{"♠", "♥", "♦", "♣"}) and 13 ranks (\code{2–10, J, Q, K, A}).
-The function has been updated to include vctrs class "card" record with fields: name, rank, suit_symbol, suit, and is_face.
-name is basically the card's name, rank is the English word for the rank, suit_symbol is the Unicode symbol for the suit,
-suit is the English word for the suit, and is_face indicates if the card is a face card (Jack, Queen, King).
+Each standard deck includes cards from all four suits (\\code{"\\u2660", "\\u2665", "\\u2666", "\\u2663"}) and 13 ranks (\\code{2-10, J, Q, K, A}).
+The function has been updated to include a vctrs class "card" record with fields: name, rank, suit_symbol, suit, and is_face.
+`name` is the card's name, `rank` is the English word for the rank, `suit_symbol` is the Unicode symbol for the suit,
+`suit` is the English word for the suit, and `is_face` indicates if the card is a face card (Jack, Queen, King).
 }
 \details{
 Because we use vctrs::new_rcrd(...), the returned object is a vctrs record with class card. You can extract the underlying
 character names with as.character(), or access fields via vctrs::field(). The print.card() method will display all card names,
-and format.card() returns the card’s "name" field.”
+and format.card() returns the card's "name" field.
 }
 \examples{
 deck <- create_shuffled_deck()
