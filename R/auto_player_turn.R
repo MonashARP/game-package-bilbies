@@ -28,7 +28,8 @@
 #' deck <- top_two$deck
 #'
 #' # 3) Now call auto_player_turn() with threshold = 17:
-#' auto_player_turn(player_hand = hand, deck = deck, threshold = 17)#' @export
+#' auto_player_turn(player_hand = hand, deck = deck, threshold = 17)
+#' #' @export
 auto_player_turn <- function(player_hand, deck, threshold) {
   # Draw card if player's hand value is less than threshold
   while (card_value(player_hand) < threshold) {
