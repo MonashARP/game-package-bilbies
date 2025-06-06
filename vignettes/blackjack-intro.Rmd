@@ -1,0 +1,225 @@
+---
+title: "blackjack-intro"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{blackjackR-intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+The `blackjack` package provides a flexible and extensible framework for simulating the card game of Blackjack in R. Unlike many other implementations, this package supports **both single-player and multiplayer modes**, with integrated dealer logic and **automated strategy simulation**. It also leverages the {vctrs} package to enhance game by allowing users to **inspect and manipulate card properties** — such as rank, suit, and value—during play. 
+
+Whether you're building bots, testing strategies, or just playing for fun, `blackjack` package offers a fully featured and customised experience! 
+
+## Basic Blackjack Rules 
+
+**General Rules** 
+
+-   The goal is to get as close to 21 as possible without going over.
+-   All number cards count as their face value; face cards (J, Q, K) are worth 10. Aces can count as 1 or 11, whichever benefits the hand more.
+-   A Blackjack is a hand with an Ace + a 10-point card on the first deal.
+-   If both player and dealer have Blackjack, the game is a push (tie); If a player busts (goes over 21), they automatically lose.
+
+**Player Rules** 
+
+-   Players are dealt two cards face up and can choose to: Hit (draw another card); Stand (keep their current hand); Double down (double their bet and receive only one more card)
+-   Players can continue to hit until they stand or bust. 
+-   In multiplayer mode, each player acts in turn.
+
+**Dealer Rules** 
+
+-   The dealer reveals one face-up card and keeps one face-down.
+-   Dealer must hit until their hand totals 17 or more. Dealer must stand on all 17s, including soft 17 (Ace + 6), unless using smart logic.
+-   If the dealer busts, all remaining players win; If the dealer does not bust, the hand is compared to each player’s hand to determine the outcome (win/lose/push).
+
+
+## Function Examples 
+
+Initialise the game by loading the library: 
+
+```{r}
+library(blackjack)
+```
+
+The package includes the functions as following to facilitate the game:
+
+### 1. `create_shuffled_deck()`
+
+Creates a shuffled Blackjack shoe (default = 208 cards). Checks the number of cards in the shuffled deck and inspects first `n` number of card: 
+
+```{r}
+# Create a shuffled deck of cards
+deck <- create_shuffled_deck() 
+
+# Check how many cards are in the deck
+length(deck)
+
+# Show the first 5 cards in the deck
+head(deck, 5) 
+```
+
+
+### 2. `deal_hand()`
+
+Deals cards from the deck, shows the cards dealt, and updates it:  
+
+```{r}
+# Deal 2 cards from the deck
+deal <- deal_hand(deck, 2)  
+
+# Show the cards dealt
+deal$hand 
+
+# Update the deck to remove dealt cards
+deck <- deal$deck 
+
+# Check how many cards are left in the deck
+length(deck) 
+```
+
+
+### 3. `card_value()`
+
+Calculates the total value of a hand, adjusting the Ace from 11 to 1 if needed to avoid busting: 
+
+```{r}
+# Create a hand (example: with an Ace and an 8)
+hand <- c("A♣", "8♦")
+
+# Get the total value of the hand (example: the result should be 19 from the example)
+card_value(hand) 
+
+# Get the value of a hand (example: with Ace downgraded to 1, 8, and 5, the result should be 14)
+card_value(c("A♣", "8♦", "5♠")) 
+```
+
+
+### 4. `player_turn()`
+
+Simulates a player's turn, allowing them to choose whether to hit or stand. In this example, we simulate the turn that always chooses to stand: 
+
+```{r}
+# Deal 2 cards to create a player hand
+hand <- deal_hand(deck, 2)$hand
+```
+
+```{r}
+# The game usually pauses for user input to decide each move.
+# To automate the process, we provide a fake input function that always chooses "stand".
+player_turn(hand, deck, input_fn = function(prompt) "s")
+```
+
+
+### 5. `auto_player_turn()`
+
+Automatically draws cards until a threshold:
+
+```{r}
+# Deal 2 cards to create a player hand
+hand <- deal_hand(deck, 2)$hand
+
+# Simulate an automatic player turn with a threshold of 17
+result <- auto_player_turn(hand, deck, threshold = 17)
+
+# Show the final hand after the turn
+result$hand
+
+# Show the total value of the final hand
+result$total
+```
+
+
+### 6. `dealer_turn()`
+
+Simulates the dealer's turn, following standard rules:
+
+```{r}
+# Deal 2 cards to create the dealer's starting hand
+hand <- deal_hand(deck, 2)$hand
+
+# Simulate the dealer's turn
+result <- dealer_turn(hand, deck)
+
+# Show the dealer's final hand
+result$hand
+
+# Show the total value of the dealer's hand
+result$total
+```
+
+
+### 7. `dealer_turn_smart()`
+
+Simulates the dealer's turn with a smart strategy, considering the player's hand:
+
+```{r}
+# Deal 2 cards for the dealer's starting hand
+dealer_hand <- deal_hand(deck, 2)$hand
+
+# Set a fixed player hand for comparison
+player_hand <- c("10♦", "8♣")
+
+# Simulate the dealer's turn using a strategy that reacts to the player's hand
+dealer_turn_smart(dealer_hand, player_hand, deck)
+```
+
+
+### 8. `play_blackjack()`
+
+Simulates a full game of Blackjack involving both player and dealer turns. The game supports single or multiple players. In this example, we demonstrate a game with 1 player versus the dealer.
+
+```{r}
+# The game usually pauses for user input to decide each move.
+# To automate the process, we provide a fake input function that always chooses "stand".
+play_blackjack(input_fn = function(prompt) "s")
+```
+
+
+### 9. `play_blackjack_multi()`
+
+Simulates a full round of Blackjack with multiple players competing against the dealer. The game supports an unlimited number of players. In this example, we demonstrate game with 2 player: 
+
+```{r}
+# The game usually pauses for user input to decide each move.
+# To automate the process, we provide a fake input function that always chooses "stand".
+play_blackjack(input_fn = function(prompt) "s")
+```
+
+
+### 10. `simulation_blackjack()`
+
+Simulates multiple automated rounds of Blackjack: 
+
+```{r}
+# Simulate 100 rounds of Blackjack using a fixed player strategy (hit until reaching 16)
+simulation_blackjack(threshold = 16, num_rounds = 100)
+```
+
+### 11. `create_suffle_deck()`
+
+Create a full shuffled Blackjack shoe and inspect the first card’s properties:
+
+```{r}
+# Create a shuffled deck 
+deck <- create_shuffled_deck()
+
+# View the first card
+deck[1]
+
+# Check card properties
+card_name(deck[1])     
+card_rank(deck[1])    
+card_symbol(deck[1])  
+card_suit(deck[1])    
+card_is_face(deck[1])  
+card_value(deck[1])  
+```
+
+
+## Package Design Decisions 
+
+For a detailed discussion of the internal design choices, integration with C++ and the {vctrs} package, as well as future development plans, please refer to the [] section.
+
+
