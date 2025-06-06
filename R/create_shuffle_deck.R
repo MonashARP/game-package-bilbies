@@ -77,7 +77,7 @@ create_shuffled_deck <- function(noOfDecks = 4) {
     )
   }
   suit_word <- unname(vapply(suit_symbol, suit_name, character(1)))
-  is_face   <- rank_text %in% c("J", "Q", "K")
+  is_face   <- rank_text %in% c("Jack", "Queen", "King")
   new_rcrd(
     list(
       name        = shuffled,
