@@ -134,13 +134,13 @@ To explore the full functionality of the blackjack package, you can view the doc
 **Game Package Part1**
 
 -   Andy Tran: Team leader, built functions and extension to single and multiple players (WIP)
--   Rong Xu: Built unit tests (WIP)
+-   Rong Xu: Implemented core functions, Built unit tests (WIP)
 -   Yiran Yao: Supported in building functions and unit tests; Vignette and readme drafts; Modified roxygen comments.   
 
 **Game Package Part2**
 
 -   Andy Tran: Built main `vctr` logic and functions; `vctr` related unit test, documentation and design vignette.  
--   Rong Xu: Rendered function examples; Built unit tests; Participation in building `vctr`.
+-   Rong Xu: Rendered function examples; Built unit tests; Ensured S3 method consistency; Resolved R CMD check issues; Participated in building vctrs record class.
 -   Yiran Yao: C++ programming for `deal_hand()`; Refinement for introduction vignette and readme; Debugging errors during checks. 
 
 
