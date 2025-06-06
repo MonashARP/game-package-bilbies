@@ -41,15 +41,19 @@ but if the total exceeds 21, Aces are downgraded to 1 point as needed to avoid b
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">card_value</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">card_value</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-cards">cards<a class="anchor" aria-label="anchor" href="#arg-cards"></a></dt>
-<dd><p>A character vector of card names such as <code>"A♠"</code>, <code>"10♥"</code>, <code>"J♦"</code>.</p></dd>
+<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
+<dd><p>A character vector of card names (e.g., `"A♠"`, `"10♥"`, `"J♦"`), or a `card` object created by `create_shuffled_deck()`.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Additional arguments passed to methods. Not used.</p></dd>
 
 </dl></div>
     <div class="section level2">
