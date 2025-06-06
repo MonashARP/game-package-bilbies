@@ -4,7 +4,7 @@ template:
   bootstrap: 5
 
 articles:
-  - title: "Design Thinking"
+  - title: "🥰Explore our Package from here:"
     contents:
       - blackjack-intro
       - blackjack-design
