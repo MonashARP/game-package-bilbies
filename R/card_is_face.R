@@ -33,7 +33,7 @@
 #'   \item{\code{card}}{A \code{logical} vector (same length as \code{x}), \code{TRUE} for each face card.}
 #'   \item{\code{character}}{The input \code{character} vector, returned as it is.}
 #' }
-#' @example
+#' @examples
 #' deck <- create_shuffled_deck()
 #' card_is_face(deck)
 #' @export
