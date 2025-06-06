@@ -1,20 +1,39 @@
 #' Simulate Multiplayer Blackjack (2 players)
 #'
 #' @description
-#' This function simulates a round of Blackjack for two players against a dealer.
+#' Simulates a full round of Blackjack with \code{n_players} playing against a dealer.  Each player
+#' can choose to hit or stand in turn; after all players have finished, the dealer draws according
+#' to standard rules.  Finally, each player’s total is compared to the dealer’s to determine the outcome.
+#' @details
+#' This function use its own build-in creating_shuffle_deck to create a shuffled deck of cards,
+#' and then deals two cards to all the player and the dealer. The player can then choose to hit
+#' (draw another card) or stand (end their turn). After the every player's turn, the dealer will draw cards
+#' according to standard Blackjack rules until they reach a score of 17 or higher. The function then
+#' evaluates the scores and determines the winner. Moreover, it is not possible for the user to use
+#' their custom deck instead. The function only support deck of card from the vctrs class.
 #'
 #' @param n_players Number of players (default is 2)
 #' @param ... Additional arguments (currently unused; reserved for future extensions)
 #' @param input_fn holder to obtain player actions (defaults to \code{readline}) which can be overridden to inject fake input for unit tests or if the user want to add fake actions.
 #'
-#' @return A data frame containing the results of the game, including each player's hand, score, and result against the dealer
-#'
+#' @return
+#' A \code{data.frame} with one row per player and these columns:
+#' \describe{
+#'   \item{\code{player}}{Character, e.g.\ “Player 1”, “Player 2”, ….}
+#'   \item{\code{hand}}{Character: the player’s final cards, space-separated (e.g.\ “A♠ 10♦ 3♣”).}
+#'   \item{\code{score}}{Integer: total value of the player’s hand.}
+#'   \item{\code{result}}{Character: one of “Player busts,” “Dealer busts,” “Player wins,”
+#'                        “Dealer wins,” or “Push.”}
+#' }
 #' @examples
-#' # Simulate a game with 2 players using automatic decisions (no user input)
-#' fake_input <- function(prompt) "stand"  # Always stand
-#' result <- play_blackjack_multi(n_players = 2, input_fn = fake_input)
-#' print(result)
-#'
+#' # Simulate a game with 2 players using automatic decisions
+#' play_blackjack_multi() # Defaults to 2 players
+#' # Player 1's turn
+#' # Hit (h) or stand (s)?
+#' # Player 2's turn
+#' # Hit (h) or stand (s)?
+#' # Example of using a custom input function to simulate player actions
+#' play_blackjack_multi(n_players = 2, input_fn = function(...) "h") # Both player hit until burst
 #' @export
 play_blackjack_multi <- function(n_players = 2, input_fn = readline, ...) {
   # Create a shuffled deck of cards
