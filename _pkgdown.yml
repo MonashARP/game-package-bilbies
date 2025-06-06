@@ -1,0 +1,12 @@
+url: https://monasharp.github.io/game-package-bilbies
+
+template:
+  bootstrap: 5
+
+articles:
+  - title: "Design Thinking"
+    contents:
+      - blackjack-intro
+      - blackjack-design
+
+

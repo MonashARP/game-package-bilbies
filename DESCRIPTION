@@ -8,6 +8,7 @@ Authors@R: c(
     person("Rong", "Xu", email = "rxuu0059@student.monash.edu", role = "aut"))
 Description: Offers functions to simulate multiplayer Blackjack gameplay, calculate hand values, and evaluate results. 
   Supports automated player decision-making, dealer behaviour, and repeated game simulations.
+URL: https://monasharp.github.io/game-package-bilbies
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
