@@ -7,40 +7,31 @@
 card_suit(x, ...)
 }
 \arguments{
-\item{x}{Either:
+\item{x}{A `card` object or a character vector of card suits (e.g., "Spade", "Heart").}
 
-  \itemize{
-    \item A vctrs “card” record (class \code{"card"}) as returned by \code{create_shuffled_deck()},
-          or any other \code{"card"} object with a \code{suit} field; or
-    \item A \code{character} vector of card suits (e.g.\ \samp{"Spade", "Heart", "Diamond"}).
-  }
-  If \code{x} is a \code{"card"} record, returns a character vector of the \code{suit} field;
-  if \code{x} is a \code{character} vector, returns \code{x} unchanged.}
+\item{...}{Additional arguments passed to methods. Not used.}
 }
 \value{
-Depending on the method:
 \describe{
-  \item{\code{card}}{A \code{character} vector (same length as \code{x}), containing the \code{suit}
-                   field of each card.}
-  \item{\code{character}}{The input \code{character} vector, returned as it is.}
+  \item{\code{card}}{A character vector containing the `suit` field of each card.}
+  \item{\code{character}}{The input character vector, unchanged.}
 }
 }
 \description{
-`card_suit()` retrieves the \code{suit} field from a vctrs “card” record (class \code{"card"}).
+`card_suit()` retrieves the \code{suit} field from a vctrs "card" record (class \code{"card"}).
 When applied to a plain character vector, it returns the vector unchanged. This function was
-specifically designed to work with vctrs “card” objects created by \code{create_shuffled_deck()}.
+specifically designed to work with vctrs "card" objects created by \code{create_shuffled_deck()}.
 }
 \details{
 - For objects of class \code{"card"}, \code{card_suit.card(x)} extracts the \code{suit} field
-  via \code{vctrs::field(x, "suit")}, returning a character vector of card suits (e.g.\ \samp{"Hearts"}).
-
-- If \code{x} is a \code{character} vector, \code{card_suit.character(x)} simply returns \code{x}
-  unchanged.
-
-- For any other class, \code{card_suit.default(x)} throws an error indicating that only
-  \code{"card"} or \code{character} inputs are accepted.
+  via \code{vctrs::field(x, "suit")}, returning a character vector of card suits (e.g., "Hearts").
+- If \code{x} is a \code{character} vector, \code{card_suit.character(x)} returns \code{x} unchanged.
+- For other types, \code{card_suit.default(x)} throws an error.
 }
 \examples{
 deck <- create_shuffled_deck()
 card_suit(deck)
+
+card_suit(c("Hearts", "Spades"))
+
 }

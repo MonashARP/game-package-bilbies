@@ -4,10 +4,12 @@
 \alias{card_value}
 \title{Score a Blackjack Hand}
 \usage{
-card_value(x)
+card_value(x, ...)
 }
 \arguments{
-\item{cards}{A character vector of card names such as \code{"A♠"}, \code{"10♥"}, \code{"J♦"}.}
+\item{x}{A character vector of card names (e.g., `"A♠"`, `"10♥"`, `"J♦"`), or a `card` object created by `create_shuffled_deck()`.}
+
+\item{...}{Additional arguments passed to methods. Not used.}
 }
 \value{
 A single numeric value representing the total hand score.
