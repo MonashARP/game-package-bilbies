@@ -31,7 +31,7 @@ NULL
 #'
 #' @examples
 #' # An example of how you play
-#' play_blackjack()
+#' # play_blackjack()
 #' # The game will then ask you: "Hit (h) or stand (s)?"
 #' # Press hit or h for hit a new card while press stand or s for stop hitting.
 #' # Example: use a fake input to force hit until burst

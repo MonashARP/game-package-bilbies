@@ -27,7 +27,7 @@
 #' }
 #' @examples
 #' # Simulate a game with 2 players using automatic decisions
-#' play_blackjack_multi() # Defaults to 2 players
+#' # play_blackjack_multi() # Defaults to 2 players
 #' # Player 1's turn
 #' # Hit (h) or stand (s)?
 #' # Player 2's turn
