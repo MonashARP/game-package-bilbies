@@ -72,7 +72,7 @@ Here are some basic examples which show you how to use the package.
 
 #### 🏎️ Quick Start
 
-write sth here 
+Start by creating a shuffled deck and deal a hand of cards. The example below shows how to generate a standard 52-card deck, draw two cards, and inspect both the hand and the remaining deck.
 
 ```{r}
 # Make sure to load the package! 
