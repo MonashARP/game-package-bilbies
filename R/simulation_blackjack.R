@@ -10,6 +10,7 @@
 #' @param threshold Numeric value between 12 and 21 indicating the score at which the player stops drawing cards (default is 16)
 #'
 #' @return A frequency table summarizing the outcomes of all simulated rounds.
+#' It is a table object with three possible values: "Win", "Lose", and "Push".
 #'
 #' @details
 #' In each simulated round:

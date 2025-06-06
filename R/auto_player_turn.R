@@ -2,7 +2,11 @@
 #'
 #' @description
 #' This function simulates the player's turn in a Blackjack game.
-#' The player keeps drawing cards until the total hand value reaches or exceeds a specific threshold.
+#' The player keeps drawing cards until the total hand value reaches
+#' or exceeds a specific threshold.
+#' @details
+#' Work basically the same as dealer_turn but with threshold input by user instead of fixed 17 rule.
+#' Call deal_hand() to draw card so it use the same logic from deal_turn as well
 #'
 #' @param player_hand A vector of cards representing the player's hand.
 #' @param deck A vector of cards representing the remaining deck.
@@ -14,8 +18,8 @@
 #'   \item{deck}{The updated deck after removing drawn cards.}
 #'   \item{total}{The final total value of the player's hand.}
 #'   }
-#'
-#'
+#' @examples
+#' auto_player_turn(player_hand = hand, deck = deck, threshold = 17)
 #' @export
 auto_player_turn <- function(player_hand, deck, threshold) {
   # Draw card if player's hand value is less than threshold

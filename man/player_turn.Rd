@@ -11,7 +11,8 @@ player_turn(player_hand, deck, input_fn = readline)
 
 \item{deck}{A vector of cards representing the remaining deck.}
 
-\item{input_fn}{a holder to obtain player actions (defaults to \code{readline}); can be overridden to inject fake input for unit tests or if the user want to add fake actions.}
+\item{input_fn}{a holder to obtain player actions (defaults to \code{readline});
+can be overridden to inject fake input for unit tests or if the user want to add fake actions.}
 }
 \value{
 A list containing:
@@ -22,18 +23,28 @@ A list containing:
 \description{
 Handles the player's turn in a Blackjack game, allowing them to hit or stand.
 }
+\details{
+1. Displaying the hand:
+
+   Before each prompt, the function prints the player’s current hand and its total value as
+   computed by \code{card_value(player_hand)}.  Card names are shown via \code{format(player_hand)}
+   while also account for vctrs class.
+
+2. Hit or Stand:
+
+   If the user types \samp{"hit"} or \samp{"h"}, the function calls \code{deal_hand(deck, 1)}
+   to draw one card. That card is appended to \code{player_hand}, and \code{deck} is updated accordingly.
+   If the user types \samp{"stand"} or \samp{"s"}, the loop ends and the final total is printed.
+   Any other input triggers an “Invalid choice” message and re-prompts.
+
+3. Stopping conditions:
+   The loop continues until the player chooses to stand or their total reaches 21 or higher.
+   When player reach 21 then the loop end immediately.
+}
 \examples{
 # Example: Player always stands immediately
 deck <- create_shuffled_deck()
-initial_hand <- deal_hand(deck, 2)
-player_hand <- initial_hand$hand
-deck <- initial_hand$deck
-
-# Fake input function that always returns "stand"
+player_hand <- deal_hand(deck, 2)$hand
 fake_input <- function(prompt) "stand"
-
-result <- player_turn(player_hand, deck, input_fn = fake_input)
-print(result$hand)
-print(result$total)
-
+player_turn(player_hand, deck, input_fn = fake_input)
 }

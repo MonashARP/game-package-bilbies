@@ -15,6 +15,7 @@ simulation_blackjack(threshold = 16, n_sim = 1000, ...)
 }
 \value{
 A frequency table summarizing the outcomes of all simulated rounds.
+It is a table object with three possible values: "Win", "Lose", and "Push".
 }
 \description{
 This function runs a simulation of a specified number of Blackjack rounds between an automated player and dealer.

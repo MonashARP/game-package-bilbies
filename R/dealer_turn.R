@@ -1,7 +1,10 @@
 #' Dealer Turn Logic
 #'
 #' @description
-#' Simulates the dealer's decisions in Blackjack.
+#' Simulates the dealer’s turn in Blackjack: the dealer hits until reaching 17 or higher,
+#' standing on a hard 17 but hitting on a soft 17.
+#' @details
+#' The dealer will continue to hit on any total <17, and also hit if total=17 with a soft ace (soft 17).
 #'
 #' @param dealer_hand The dealer's current hand
 #' @param deck The current deck of cards
