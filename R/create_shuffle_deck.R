@@ -5,16 +5,31 @@ NULL
 #' @description
 #' Creates a shuffled Blackjack shoe consisting of multiple standard 52-card decks combined.
 #' Each standard deck includes cards from all four suits (\code{"♠", "♥", "♦", "♣"}) and 13 ranks (\code{2–10, J, Q, K, A}).
+#' The function has been updated to include vctrs class "card" record with fields: name, rank, suit_symbol, suit, and is_face.
+#' name is basically the card's name, rank is the English word for the rank, suit_symbol is the Unicode symbol for the suit,
+#' suit is the English word for the suit, and is_face indicates if the card is a face card (Jack, Queen, King).
 #'
-#' @param noOfDecks Integer. Number of decks to include in the shoe (default = 4). A typical Blackjack shoe contains 4 to 8 decks.
+#' @details
+#' Because we use vctrs::new_rcrd(...), the returned object is a vctrs record with class card. You can extract the underlying
+#' character names with as.character(), or access fields via vctrs::field(). The print.card() method will display all card names,
+#' and format.card() returns the card’s "name" field.”
 #'
-#' @return A character vector representing the shuffled cards in the shoe. For example, 4 decks result in a vector of 208 elements.
+#' @param noOfDecks Integer (≥1). Number of decks to include in the shoe (default = 4). A typical Blackjack shoe contains 4 to 8 decks.
 #'
+#' @return
+#' A [vctrs][vctrs::new_rcrd] “card” record vector of length `52 * noOfDecks`. Each element is an S3 object of class `"card"` with these fields:
+#' \itemize{
+#'   \item \code{name}       – character, e.g. "2♣", "A♠"
+#'   \item \code{rank}       – character, one of "Two", "Three", …, "Ace"
+#'   \item \code{suit_symbol}– character, one of "♠", "♥", "♦", "♣"
+#'   \item \code{suit}       – character, one of "Spade", "Heart", "Diamond", "Club"
+#'   \item \code{is_face}    – logical; TRUE for Jack/Queen/King, FALSE otherwise
+#' }
+#' After update, the creating_shuffle_deck now able to return a vctrs record with the above fields instead of just a character vector.
 #' @examples
 #' deck <- create_shuffled_deck()
-#' length(deck)                   # Should be 208 (4 decks of 52)
-#' head(deck, 5)                  # Show the top 5 cards
-#'
+#' length(deck)                   # Should be 208 (4 decks of 52 as default setting)
+#' deck                           # Prints the deck of cards
 #' deck2 <- create_shuffled_deck(noOfDecks = 6)
 #' length(deck2)                 # Should be 312 (6 * 52)
 #'
