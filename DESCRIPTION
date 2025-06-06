@@ -1,0 +1,26 @@
+Package: blackjack
+Type: Package
+Title: Multiplayer Blackjack Game
+Version: 0.1.0
+Authors@R: c(
+    person("Andy", "Tran", email = "dtra0044@student.monash.edu", role = c("cre", "aut")),
+    person("Yiran", "Yao", email = "yyao0066@student.monash.edu", role = "aut"),
+    person("Rong", "Xu", email = "rxuu0059@student.monash.edu", role = "aut"))
+Description: Offers functions to simulate multiplayer Blackjack gameplay, calculate hand values, and evaluate results. 
+  Supports automated player decision-making, dealer behaviour, and repeated game simulations.
+URL: https://monasharp.github.io/game-package-bilbies
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Imports: 
+    Rcpp,
+    vctrs
+LinkingTo: 
+    Rcpp

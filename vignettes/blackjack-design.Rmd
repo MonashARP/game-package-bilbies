@@ -1,0 +1,162 @@
+---
+title: "blackjack_design"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{blackjack_design}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(blackjack)
+```
+
+## Blackjack Design
+
+This vignette provides an overview of the design and structure of the `blackjack` package, which simulates a game of blackjack.
+It will help the user understand how the package is organized and how to use its functions effectively.
+
+## Package function name:
+
+\- `play_blackjack()`: This is the main function that simulates a single player game of blackjack.
+
+\- `play_blackjack_multi()`: This function simulates a multi-player game of blackjack, allowing up to un limited number of players to play against the dealer (the default setting is 2).
+
+\- `simulation_blackjack()`: This function simulates a game of blackjack with a specified threshold the user want to stay at and the number of round, returning the results of the simulation when the user usually just stop hit when the total value of the hand is greater than or equal to the threshold.
+
+\- `deal_hand()`: This function deals a hand of cards (the default is 2) to a player or dealer.
+It also check for whether the deck has been used up 75% and reshuffles the deck if necessary.
+
+\- `create_shuffle_deck()`: This function creates shuffled deck of cards (the default number of deck in a time is set to 4 which is the same in casino) \## Function to interact with the card:
+
+\- `card_value()`: This function returns the value of a card, taking into account the special case of an Ace, which can be worth 1 or 11.
+
+\- `card_name()`: This function returns the name of a card, such as "Ace of Spades" or "10 of Hearts".
+
+\- `card_suit()`: This function returns the suit of a card, such as "Spades", "Hearts", "Diamonds", or "Clubs".
+
+\- `card_rank()`: This function returns the rank of a card, such as "Ace", "2", "3", ..., "10", "Jack", "Queen", or "King".
+
+\- `card_symbol()`: This function returns the symbol of a card, such as "A", "2", "3", ..., "10", "J", "Q", or "K".
+
+\- `card_is_face()`: This function checks if a card is a face card (Jack, Queen, or King) and returns TRUE or FALSE.
+
+## Arguments for the functions:
+
+\- `play_blackjack()` and `play_blackjack_multi()` are designed to be a more user-interactive approach, therefore the argument for both single player and multiplayer version have `input_fn` which is the input of the user to decide whether to hit or stay.
+Normally if you just want to enjoy the game, you dont need to worry about that but still you can have fun messing around with this argument.
+For `play_blackjack_multi()`, you can also set the number of players by using `n_players` argument, which is set to 2 by default.
+
+\- `simulation_blackjack()` has `threshold` and `n_rounds` arguments, which allow the user to set the threshold for staying and the number of rounds to simulate.
+The default threshold is set to 17, which is a common strategy in blackjack and the default number of rounds is set to 1000.
+
+\- `deal_hand()` has `deck` and `n_cards` argument, which allow the user to specify the deck of cards to use and the number of cards to deal.
+The default number of cards is set to 2, which make it easy to deal a hand in blackjack game.
+
+\- `create_shuffle_deck()` has `noOfDecks` argument, which allows the user to specify the number of decks to use.
+The default number of decks is set to 4, which is a common number of decks used in blackjack games.
+
+## User workflow
+
+Here is how a user would play our game, step by step:
+
+1.  Choose either `play_blackjack()` or `play_blackjack_multi()` to start.
+
+2.  The game will show you this line `Hit (h) or stand (s)?` which require you to input either "hit" or "stand", you can type in short key like "h" or "s".
+    Make your decision according to dealer hand or your hand.
+
+3.  For `simulation_blackjack` it is more like a one time run simulation, you can set the threshold and number of rounds to simulate.
+    The game will return the results of the simulation, including the number of wins, losses, and push.
+    You can then learn the probability of winning based on the threshold you set.
+
+4.  You can also play by yourself by using `create_shuffle_deck()` to create a shuffled deck of cards and then use `deal_hand("your deck")` to deal a hand of cards from that deck
+
+5.  You can now use `card_value()` to check the current score of the hand with ace handling feature
+
+6.  You can also use `card_name()`, `card_suit()`, `card_rank()`, `card_symbol()` and `card_is_face` to get more information about the cards in the hand.
+
+We designed the game that allow the user to play blackjack in quick pace or when in short of time where the game handle everything and the user only need to decide hit or stand
+
+## Use of internal modular functions
+
+Like arguments mentioned above, `play_blackjack()` and `play_blackjack_multi()` include `input_fn` argument which allow the user to put "fake input" to the game so the user can technically play the game without the need to typing anything.
+This is useful for testing or for creating automated scripts to play the game.
+We also include the vector inside each cards itself which is hidden to the user and only shown when the user is curious about the card.
+However due to the nature fast pace of the game, it is not possible for the user to check the card information inside the game.
+It is recommend for the user to check the card information after the game is over or when the user is not in the middle of the game.
+
+## Use of Non-Standard Evaluation (NSE)
+
+The package does not use Non-Standard Evaluation (NSE) in its functions.
+All functions are designed to be straightforward and easy to use, without the need for NSE.
+
+## Limitations
+
+While we have optimized the game for a quick and enjoyable experience, we acknowledge that it is a simplified version of blackjack.
+
+-   We are aware of the game's biggest limitation compare to casino blackjack, such as the fact that it does not include advanced features like money, betting, splitting, or doubling down.
+
+-   Single player and multiplayer version of the game seem to overlap as you could techniquelly play single player with `play_blackjack_multi(n_players = 1)` and we are aware that it is not the best design choice, but we believe that it is still a good starting point for users who want to play blackjack.
+
+-   The game does not include advanced strategies or features like card counting, which are often used by experienced players to gain an advantage in blackjack.
+
+-   A graphical user interface (GUI) or visual representation of the cards would be normal for user but we dont have that, which may limit the user experience for some players.
+
+-   The game lack important features like a strategy table or guide for players to follow, which may make it less accessible for beginners who are unfamiliar with blackjack rules and strategies.
+
+-   The game was designed to quick-pace so it is not suitable for players who prefer a more leisurely or strategic approach to blackjack where they would want to save the game or pause to look up the card information.
+
+-   The game was tested to make sure most functions work as intended, but we acknowledge that there may be bugs or issues that we have not yet discovered.
+
+## Use of AI support:
+
+We used Chat GPT to suppport the creation of our game, help us to debug and test the game, and to provide suggestions for improvement.
+Here are some prompts we used:
+
+-   "Insert old C++ code which only accept Character", why does this C++ not work with my current game and cause my R to crash?
+
+-   Should i define vector for cards when i generated the deck or make it as a separate function that define the vector?
+
+-   When using devtools::check(), I got an error that says "Error in getDLLRegisteredDLLsRoutines.DLLInfo(dll, addNames = FALSE)" How do i fix this?
+
+-   Why does devtools::document() generate the RcppExports.R file in both src and R folder, and what is the purpose of this file?
+
+-   I current insert C++ code inside my deal_hand, but I get the error: 'Blackjack_score_hand_cpp' not available for package 'blackjack'.
+    What does this mean, i already have the C++ code in my package and run devtools::document() to generate the RcppExports.R file, why does it not work?
+
+-   How do i used format() to format the vector of cards?
+
+We acknowledge that AI support has been a great help in the development of our game, escpecially when we apply vctrs class and new C++ code into the game.
+These answers have helped us to fix our code and reduce the time require for debugging by a large margin.
+As a result, we are able to optimize the game while improving the design of the game, rather than spending time on debugging and testing.
+
+## Conclusion
+
+Our game is designed to be a quick and enjoyable experience for users who want to play blackjack in a short amount of time.
+We also develop our game package compare to the previous one to:
+
+-   Store the card information in a vector, which allows for more efficient handling of the cards and makes it easier to access the card information.
+
+-   Use C++ code to optimize the performance of the game.
+    As we believe `deal_hand()` is the most used function in the game, we optimize it to use C++ code to handle the card dealing process to allows for faster and more efficient handling of the game logic.
+
+-   Write unit test to make sure that the game works as intended and to catch any bugs or issues before they become a problem for users.
+
+-   We document our code to make it easier for users to understand how the game works and how to use its functions effectively.
+    We also provide examples and explanations of how to use the package, which will help users get started quickly.
+    
+-   We also provide a vignette to help users understand the design and structure of the package, which will help them use the package effectively.
+
+-   The limitation and AI usage section are included to provide transparency about the package's capabilities and limitations, as well as to acknowledge the role of AI in our game development process.
+
+We hope that this package will provide a fun and engaging experience for users who want to play blackjack in R.

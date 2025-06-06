@@ -1,0 +1,12 @@
+url: https://monasharp.github.io/game-package-bilbies
+
+template:
+  bootstrap: 5
+
+articles:
+  - title: "🥰Explore our Package from here:"
+    contents:
+      - blackjack-intro
+      - blackjack-design
+
+
