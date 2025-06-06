@@ -40,5 +40,5 @@ hand <- top_two$hand
 deck <- top_two$deck
 
 # 3) Now call auto_player_turn() with threshold = 17:
-auto_player_turn(player_hand = hand, deck = deck, threshold = 17)#' @export
+auto_player_turn(player_hand = hand, deck = deck, threshold = 17)
 }
