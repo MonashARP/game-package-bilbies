@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
   <img src="logo/blackjack_sticker.png" alt="blackjack logo" width="100"/>
 </p>
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 **Welcome to the World of Blackjack** 
 
@@ -143,10 +144,10 @@ To explore the full functionality of the blackjack package, you can view the doc
 -   Rong Xu: Rendered function examples; Built unit tests; Ensured S3 method consistency; Resolved R CMD check issues; Participated in building vctrs record class.
 -   Yiran Yao: C++ programming for `deal_hand()`; Refinement for introduction vignette and readme; Debugging errors during checks. 
 
-
 ### License
 
-Licensed under the [GNU General Public License (GPL) ≥ 3](https://github.com/MonashARP/game-package-bilbies/blob/main/LICENSE).
+This package is licensed under the **GNU General Public License v3.0 or later**.  
+See the [LICENSE](LICENSE) file for details.
 
 ### Usage of Generative AI
 

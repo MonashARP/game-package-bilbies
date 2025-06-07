@@ -7,6 +7,9 @@
 <img src="logo/blackjack_sticker.png" alt="blackjack logo" width="100"/>
 </p>
 
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+
 **Welcome to the World of Blackjack**
 
 Blackjack is a classic card game in which the objective is to achieve a
@@ -146,7 +149,7 @@ the documentation for each function directly in R by typing
 
 - Andy Tran: Team leader, built functions and extension to single and
   multiple players (WIP)
-- Rong Xu: Built unit tests (WIP)
+- Rong Xu: Implemented core functions, Built unit tests (WIP)
 - Yiran Yao: Supported in building functions and unit tests; Vignette
   and readme drafts; Modified roxygen comments.
 
@@ -154,15 +157,17 @@ the documentation for each function directly in R by typing
 
 - Andy Tran: Built main `vctr` logic and functions; `vctr` related unit
   test, documentation and design vignette.  
-- Rong Xu: Rendered function examples; Built unit tests; Participation
-  in building `vctr`.
+- Rong Xu: Rendered function examples; Built unit tests; Ensured S3
+  method consistency; Resolved R CMD check issues; Participated in
+  building vctrs record class.
 - Yiran Yao: C++ programming for `deal_hand()`; Refinement for
   introduction vignette and readme; Debugging errors during checks.
 
 ### License
 
-Licensed under the [GNU General Public License (GPL) ≥
-3](https://github.com/MonashARP/game-package-bilbies/blob/main/LICENSE).
+This package is licensed under the **GNU General Public License v3.0 or
+later**.  
+See the [LICENSE](LICENSE) file for details.
 
 ### Usage of Generative AI
 
