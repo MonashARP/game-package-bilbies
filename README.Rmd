@@ -20,8 +20,6 @@ knitr::opts_chunk$set(
   <img src="logo/blackjack_sticker.png" alt="blackjack logo" width="100"/>
 </p>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-
 **Welcome to the World of Blackjack** 
 
 Blackjack is a classic card game in which the objective is to achieve a hand total closer to 21 than the dealer’s without exceeding it. Each player begins with two cards and may choose to “hit” to draw additional cards or “stand” to keep their current hand. Number cards retain their face value, face cards are worth 10, and Aces count as either 1 or 11. If a hand exceeds 21, it results in a bust and the player loses. The dealer must draw until reaching at least 17. A starting hand with an Ace and a 10-value card is called a blackjack and typically earns a bonus.
@@ -149,7 +147,6 @@ Full documentation is available at the [pkgdown site](https://monasharp.github.i
 ### License
 
 This package is licensed under the **GNU General Public License v3.0 or later**.  
-See the [LICENSE](LICENSE) file for details.
 
 ### Usage of Generative AI
 
