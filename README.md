@@ -143,6 +143,9 @@ To explore the full functionality of the blackjack package, you can view
 the documentation for each function directly in R by typing
 ?<function_name> into the console.
 
+Full documentation is available at the [pkgdown
+site](https://monasharp.github.io/game-package-bilbies/index.html).
+
 ### Team Contributions
 
 **Game Package Part1**
