@@ -1,12 +1,12 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://monasharp.github.io/game-package-bilbies/404.html</loc></url>
+<url><loc>https://monasharp.github.io/game-package-bilbies/LICENSE-text.html</loc></url>
+<url><loc>https://monasharp.github.io/game-package-bilbies/LICENSE.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/articles/blackjack-design.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/articles/blackjack-intro.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/articles/index.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/authors.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/index.html</loc></url>
-<url><loc>https://monasharp.github.io/game-package-bilbies/LICENSE-text.html</loc></url>
-<url><loc>https://monasharp.github.io/game-package-bilbies/LICENSE.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/auto_player_turn.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/blackjack-package.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/card_is_face.html</loc></url>
@@ -16,13 +16,13 @@
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/card_symbol.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/card_value.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/create_shuffled_deck.html</loc></url>
+<url><loc>https://monasharp.github.io/game-package-bilbies/reference/deal_hand.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/dealer_turn.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/dealer_turn_smart.html</loc></url>
-<url><loc>https://monasharp.github.io/game-package-bilbies/reference/deal_hand.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/index.html</loc></url>
-<url><loc>https://monasharp.github.io/game-package-bilbies/reference/player_turn.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/play_blackjack.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/play_blackjack_multi.html</loc></url>
+<url><loc>https://monasharp.github.io/game-package-bilbies/reference/player_turn.html</loc></url>
 <url><loc>https://monasharp.github.io/game-package-bilbies/reference/simulation_blackjack.html</loc></url>
 </urlset>
 

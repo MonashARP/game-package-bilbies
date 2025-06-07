@@ -148,15 +148,16 @@ site](https://monasharp.github.io/game-package-bilbies/index.html).
 **Game Package Part1**
 
 - Andy Tran: Team leader, built core functions and extension to single
-  and multiple players.
+  and multiple players, build simulation and fix unit tests.
 - Rong Xu: Implemented core functions. Built unit tests.
 - Yiran Yao: Support role in building functions and unit tests; Vignette
   and readme drafts; Modified roxygen comments.
 
 **Game Package Part2**
 
-- Andy Tran: Built main `vctr` logic and functions; `vctr` related unit
-  test, documentation and design vignette.  
+- Andy Tran: Simplify C++, create vctrs class + generic functions, add
+  documentation and unit tests for stuffs related to vctrs, create
+  vignette design, did various minor fixes.
 - Rong Xu: Rendered function examples; Built unit tests; Ensured S3
   method consistency; Resolved R CMD check issues; Participated in
   building vctrs record class.
