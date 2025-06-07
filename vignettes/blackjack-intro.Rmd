@@ -220,6 +220,6 @@ card_value(deck[1])
 
 ## Package Design Decisions 
 
-For a detailed discussion of the internal design choices, integration with C++ and the {vctrs} package, as well as future development plans, please refer to the [] section.
+For a detailed discussion of the internal design choices, integration with C++ and the {vctrs} package, as well as future development plans, please refer to the [Design](https://monasharp.github.io/game-package-bilbies/articles/blackjack-design.html) section.
 
 

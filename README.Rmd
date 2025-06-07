@@ -134,9 +134,9 @@ Full documentation is available at the [pkgdown site](https://monasharp.github.i
 
 **Game Package Part1**
 
--   Andy Tran: Team leader, built functions and extension to single and multiple players (WIP)
--   Rong Xu: Implemented core functions, Built unit tests (WIP)
--   Yiran Yao: Supported in building functions and unit tests; Vignette and readme drafts; Modified roxygen comments.   
+-   Andy Tran: Team leader, built core functions and extension to single and multiple players.
+-   Rong Xu: Implemented core functions. Built unit tests. 
+-   Yiran Yao: Support role in building functions and unit tests; Vignette and readme drafts; Modified roxygen comments.   
 
 **Game Package Part2**
 

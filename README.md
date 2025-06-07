@@ -7,9 +7,6 @@
 <img src="logo/blackjack_sticker.png" alt="blackjack logo" width="100"/>
 </p>
 
-[![License: GPL
-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-
 **Welcome to the World of Blackjack**
 
 Blackjack is a classic card game in which the objective is to achieve a
@@ -150,10 +147,10 @@ site](https://monasharp.github.io/game-package-bilbies/index.html).
 
 **Game Package Part1**
 
-- Andy Tran: Team leader, built functions and extension to single and
-  multiple players (WIP)
-- Rong Xu: Implemented core functions, Built unit tests (WIP)
-- Yiran Yao: Supported in building functions and unit tests; Vignette
+- Andy Tran: Team leader, built core functions and extension to single
+  and multiple players.
+- Rong Xu: Implemented core functions. Built unit tests.
+- Yiran Yao: Support role in building functions and unit tests; Vignette
   and readme drafts; Modified roxygen comments.
 
 **Game Package Part2**
@@ -169,8 +166,7 @@ site](https://monasharp.github.io/game-package-bilbies/index.html).
 ### License
 
 This package is licensed under the **GNU General Public License v3.0 or
-later**.  
-See the [LICENSE](LICENSE) file for details.
+later**.
 
 ### Usage of Generative AI
 
